@@ -11,7 +11,7 @@ const Header = () => {
                 <div>
                     <div>
                         <img src={logo} alt="Logo" />
-                        <h4>Petrol pump Dealership</h4>
+                        <h4>Petrol pump Dealer</h4>
                     </div>
 
 
