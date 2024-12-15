@@ -129,11 +129,10 @@ const Home = () => {
       {/* aboutUs */}
       <div className="about">
         <div>
-          <h2>WELCOME TO PETROL PUMP DEALERSHIP APPLICATION</h2>
-          <p>The online application form for petrol pump dealership shall apply during 12-12-2024 to 23-12-2024, each applicant can apply for different locations, while applying online applicant should keep the scanned copies of required documents handy.</p>
-          <p>All the required information should be filled correctly, in case of any discrepancy the application form will be rejected there and then, the applicant will not be able to apply again.</p>
-          <p>It is requisite to submit the application within the announced date mentioned on the portal, the applicant will not be able to apply after the due date.</p>
-
+          <h2>APPLY NOW FOR A PETROL STATION DEALERSHIP OPPORTUNITY</h2>
+          <p>The online application process for the petrol pump dealership will be open for a limited time. Applicants are encouraged to apply for various available locations. While filling out the application, it is crucial to have all the necessary documents scanned and ready to upload, as this will help streamline the process.</p>
+          <p>Applicants must ensure that all details are filled out accurately. Any inconsistencies or incorrect information in the form will lead to immediate rejection, and once rejected, the applicant will not have the option to reapply for the same dealership.</p>
+          <p>It is essential to submit the application within the given timeline, as outlined on the official portal. Any applications submitted after the closing date will not be accepted under any circumstances, and the system will no longer allow access to the application form.</p>
           <div className="links">
             <ul>
               <li>
