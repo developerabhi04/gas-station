@@ -1,0 +1,295 @@
+.home {
+    // border: 2px solid red;
+    // padding: 1rem;
+    // display: flex;
+    // flex-direction: column;
+    // height: calc(100vh - 4rem);
+    // max-width: 1220px;
+    // margin: auto;
+    // width: 100%;
+
+    // first section
+    >div {
+        display: flex;
+        align-items: stretch;
+        gap: 2rem;
+        padding: 1rem;
+        margin-bottom: 0.6rem;
+
+        // notification
+        .Notification {
+            width: 30%;
+            flex: none;
+
+            .whats-new {
+                border-radius: 11px 11px 6px 6px;
+                background-color: #fff;
+                // min-height: 320px;
+                width: 100%;
+                // margin-top: 0px;
+                border: 1px solid #027bc4;
+
+
+                h3 {
+                    border-radius: 10px 10px 0 0;
+                    width: 100%;
+                    background-color: #027bc4;
+                    text-align: center;
+                    color: #fff;
+                    position: relative;
+                    display: inline-block;
+                    // padding: 0.3rem;
+
+                    >span {
+                        background: #027bc4;
+                        font-size: 15px;
+                        color: #fff;
+                        padding: 3px 10px;
+                        text-transform: uppercase;
+                        letter-spacing: 1px;
+                    }
+                }
+
+
+                // category
+                .categories {
+                    display: block;
+                    overflow: hidden;
+                    position: relative;
+
+                    .inner_categories {
+                        display: block;
+                        animation: scroll-up 20s linear infinite;
+                        display: flex;
+                        flex-direction: column;
+
+                        >ul {
+                            list-style: none;
+                            padding: 0;
+                            // margin: 15px 10px 0 10px;
+
+                            >li {
+                                cursor: pointer;
+                                background-color: #fff;
+                                color: #2c2d34;
+                                margin: 7px 5px;
+                                border: 1px solid #027bc4;
+
+
+                                >a {
+                                    display: block;
+                                    text-decoration: none;
+                                    padding: 4px 10px 3px 28px;
+                                    color: #2c2d34;
+                                    font-size: 13px;
+                                    background: url(../assets/bullet.png) no-repeat #fff 7px 6px;
+                                    transition: all ease-in-out 0.5s;
+
+                                    >span {
+
+
+                                        >img {}
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    &:hover .inner_categories {
+                        animation-play-state: paused;
+                        /* Pause animation on hover */
+                    }
+                }
+
+            }
+
+            // button
+            .bottom-links-b {
+
+                >ul {
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+
+                    >li {
+                        background-color: #fff;
+                        display: inline-block;
+                        width: 100%;
+                        // margin: 25px 5px 4px 5px;
+                        padding: 0.8rem;
+                        text-align: center;
+
+                        >a {
+                            color: #fff;
+                            font-size: 14px;
+                            background: #007bff;
+                            padding: 11px 33px;
+                            border-radius: 5px;
+                            cursor: pointer;
+
+                            &:hover {
+                                background: #0d6ed6;
+                            }
+                        }
+                    }
+                }
+
+            }
+
+        }
+
+
+    }
+
+
+
+    // second section
+    .notice {
+        // border: 1px solid black;
+        // width: 1200px;
+        background-color: aliceblue;
+        padding: 7px;
+
+        >div {
+            display: flex;
+            width: 1200px;
+            margin: auto;
+
+            >strong {
+                color: red;
+                font-size: 20px;
+                padding-right: 1.5rem;
+                font-weight: 700;
+            }
+
+            >marquee {
+                color: red;
+                margin-top: 4px;
+            }
+        }
+    }
+
+
+
+    // third section
+    .about {
+        margin: 2rem 1rem;
+
+        >div {
+            width: 70%;
+
+
+            >h2 {
+                margin: 1rem 0;
+                width: 100%;
+                text-align: center;
+                font-weight: 400;
+            }
+
+            >p {
+                padding: 1rem;
+                margin: 1rem;
+                font-size: 14px;
+                letter-spacing: 1px;
+            }
+
+            .links {
+                margin: 2rem 1rem;
+
+
+                >ul {
+                    list-style: none;
+
+                    >li {
+
+                        >a {
+                            cursor: pointer;
+                            display: block;
+                            text-decoration: none;
+                            padding: 4px 10px 3px 28px;
+                            color: #2c2d34;
+                            font-size: 15px;
+                            background: url(../assets/bullet.png) no-repeat #fff 7px 6px;
+                            transition: all ease-in-out 0.5s;
+
+                            
+                        }
+                    }
+                }
+
+            }
+        }
+
+
+        .news-events {
+            width: 30%;
+            border: 1px solid #e77e05;
+            height: 349px;
+
+            .imp-link {
+                // height: 350px;
+                width: 100%;
+
+                >h3 {
+                    width: 100%;
+                    text-align: center;
+                    background: #e77e05;
+
+                    >span {
+
+                        font-size: 15px;
+                        color: #fff;
+                        padding: 3px 10px;
+                        text-transform: uppercase;
+                        letter-spacing: 1px;
+                    }
+                }
+
+
+                >ul {
+                    list-style: none;
+                    padding: 0;
+                    margin: 15px 0 0 0;
+                    overflow-y: scroll;
+                    height: 290px;
+
+                    >li {
+                        cursor: pointer;
+                        background-color: #fff;
+                        color: #2c2d34;
+                        margin: 7px 5px;
+                        // border: 1px solid #027bc4;
+
+                        >a {
+                            display: block;
+                            text-decoration: none;
+                            padding: 3px 10px 3px 28px;
+                            color: #2c2d34;
+                            font-size: 11px;
+                            background: url(../assets/bullet.png) no-repeat #fff 7px 6px;
+                            transition: all ease-in-out 0.5s;
+
+                            >span {
+
+                                >img {}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+}
+
+
+@keyframes scroll-up {
+    0% {
+        transform: translateY(0); // Start at the top
+    }
+
+    100% {
+        transform: translateY(-100%); // Scroll up to hide the entire content
+    }
+}
