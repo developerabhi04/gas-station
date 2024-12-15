@@ -1,0 +1,180 @@
+.login-section {
+
+
+    >div {
+
+
+        >div {
+
+            width: 500px;
+            margin: auto;
+
+            .pannel {
+                width: 100%;
+                padding: 20px;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+                margin: 5rem 0;
+
+                >p {
+                    margin-bottom: 1rem;
+                    font-size: 13px;
+
+                    >a {
+                        color: blue;
+                        font-weight: 600;
+                        cursor: pointer;
+                    }
+                }
+
+                >h3 {
+                    color: #000;
+                    font-size: 21px;
+                    font-weight: 600;
+                    margin: 0 0 20px 0;
+                    text-align: center;
+                    opacity: 0.8;
+                }
+
+
+                >form {
+
+
+                    >div {
+                        // display: flex;
+                        // -ms-flex-wrap: wrap;
+                        // flex-wrap: wrap;
+                        // margin-right: -15px;
+                        // margin-left: -15px;
+
+                        >div {
+                            padding: 0.4rem;
+
+                            >svg {
+                                position: absolute;
+                                color: #495056;
+                                background: #e9ecef;
+                                padding: 10px 9px;
+                                height: 37px;
+                                margin: 0.7px 0 0 0.4px;
+                                border-top-left-radius: 0.25rem;
+                                border-bottom-left-radius: 0.32rem;
+                                width: 31px;
+                                text-align: center;
+                            }
+
+                            >input {
+
+                                display: block;
+                                width: 100%;
+                                height: calc(1.5em + .75rem + 2px);
+                                padding: 1.1rem 2.75rem;
+                                font-size: 0.8rem;
+                                font-weight: 400;
+                                line-height: 1.5;
+                                color: #495057;
+                                background-color: #fff;
+                                background-clip: padding-box;
+                                border: 1px solid #ced4da;
+                                border-radius: .25rem;
+                                transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                                // outline-color: #007bff;
+                                outline: none;
+                            }
+
+
+                            // 
+                            .captcha {
+                                margin-bottom: 10px;
+                                display: flex;
+
+                                >span {
+
+                                    >img {
+
+                                        vertical-align: middle;
+                                        border-style: none;
+                                    }
+                                }
+
+                                >button {
+                                    // background-color: transparent;
+                                    color: #fff;
+                                    background-color: #28a745;
+                                    border-color: #28a745;
+                                    margin-left: 1rem;
+                                    border: none;
+                                    padding: 0 0.6rem;
+                                    border-radius: 3px;
+
+                                    svg {
+                                        cursor: pointer;
+                                        font-size: 1.2rem;
+
+                                    }
+                                }
+                            }
+
+
+                            // 
+                            >button {
+                                width: 34%;
+                                display: block;
+                                margin: 0.5rem auto;
+                                padding: 0.6rem 2rem;
+                                background: #007bff;
+                                border: none;
+                                border-radius: 4px;
+                                cursor: pointer;
+                                color: #fff;
+                                font-size: 0.9rem;
+                            }
+
+                            // 
+                            >a {
+                                border: 1px solid red;
+
+                                >b {}
+                            }
+                        }
+                    }
+                }
+
+
+                // 
+                .forgot-password {
+                    text-align: center;
+                    //  margin: 0.7rem;
+                    padding: 1rem;
+                    opacity: 0.6;
+
+                    >a {
+                        cursor: pointer;
+
+                        >b {
+                            font-size: 11px;
+                            font-weight: 500;
+                        }
+                    }
+                }
+
+                .sign-up {
+                    text-align: center;
+                    margin: 0.5rem;
+
+                    >p {
+                        opacity: 0.7;
+                        font-size: 0.8rem;
+                    }
+
+                    >a {
+                        color: #0630df;
+                        opacity: 0.8;
+                        cursor: pointer;
+                        font-size: 0.8rem;
+                    }
+                }
+            }
+        }
+    }
+}

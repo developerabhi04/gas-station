@@ -1,6 +1,6 @@
 import { Slider } from "6pp";
 import notification from "../../assets/notification.gif";
-import pump1 from "../../assets/gas-station-1664615_1280.jpg";
+import pump1 from "../../assets/3.png";
 import pump2 from "../../assets/automobile-5340093_1280.jpg";
 
 // import { Link } from "react-router-dom";

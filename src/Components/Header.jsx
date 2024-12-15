@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../assets/logo_2.png";
+import logo from "../assets/logoo.png";
 import { Person, Settings } from "@mui/icons-material";
 
 const Header = () => {
@@ -10,8 +10,12 @@ const Header = () => {
             <header className="header">
                 <div>
                     <div>
-                        <img src={logo} alt="Logo" />
-                        <h4>Petrol pump Dealer</h4>
+                        <Link to={"/"}>
+                            <img src={logo} alt="Logo" />
+                        </Link>
+                        <Link to={"/"}>
+                            <h4>Prime Petrol Distributors</h4>
+                        </Link>
                     </div>
 
 
@@ -20,11 +24,11 @@ const Header = () => {
                             <ul>
                                 <li>
                                     <Person />
-                                    <Link>Apply Dealership</Link>
+                                    <Link to={"/"}>Apply Dealership</Link>
                                 </li>
                                 <li>
                                     <Settings />
-                                    <Link>Applicant Login</Link>
+                                    <Link to={"/login"}>Applicant Login</Link>
                                 </li>
                             </ul>
                         </div>

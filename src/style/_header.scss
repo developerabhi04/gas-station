@@ -22,15 +22,24 @@
             width: 25%;
             display: flex;
             align-items: center;
-            gap: 1rem;
+            // gap: 1rem;
 
-            >img {
-                height: 50px;
+            >a {
+                text-decoration: none;
+
+                >img {
+                    height: 70px;
+                }
             }
 
-            >h4 {
-                font-size: 1rem;
-                font-weight: 400;
+            >a {
+                text-decoration: none;
+                color: #1b1819;
+                >h4 {
+                    font-size: 1rem;
+                    font-weight: 600;
+
+                }
             }
 
         }
