@@ -1,5 +1,5 @@
 .register-section {
-
+    padding: 10rem 0;
 
     >div {
 
@@ -14,7 +14,7 @@
                 padding: 20px;
                 border-radius: 5px;
                 border: 1px solid #ccc;
-                margin: 5rem 0;
+                // margin: 5rem 0;
 
 
 
@@ -109,6 +109,362 @@
                     }
                 }
 
+            }
+        }
+    }
+}
+
+
+// Responsiveness for various screen sizes
+
+@media (max-width: 1020px) {
+    .register-section {
+        padding: 10rem 0;
+
+        >div {
+
+
+            >div {
+
+                width: 500px;
+                margin: auto;
+
+                .wise {
+                    width: 100%;
+                    padding: 20px;
+                    border-radius: 5px;
+                    border: 1px solid #ccc;
+                    // margin: 5rem 0;
+
+
+
+                    >h3 {
+                        color: #000;
+                        font-size: 21px;
+                        font-weight: 600;
+                        margin: 0 0 20px 0;
+                        text-align: center;
+                        opacity: 0.8;
+                    }
+
+
+                    >form {
+
+
+                        >div {
+
+                            >div {
+                                padding: 0.4rem;
+
+
+                                // 
+                                >label {
+                                    display: inline-block;
+                                    margin-bottom: .5rem;
+                                    color: #000;
+                                    font-weight: 600;
+
+                                    >span {
+                                        color: red;
+                                    }
+                                }
+
+                                // 
+                                >select {
+                                    display: block;
+                                    width: 100%;
+                                    height: calc(1.5em + .75rem + 2px);
+                                    padding: .375rem .75rem;
+                                    font-size: 13px;
+                                    font-weight: 400;
+                                    line-height: 1.5;
+                                    color: #495057;
+                                    background-color: #fff;
+                                    background-clip: padding-box;
+                                    border: 1px solid #ced4da;
+                                    outline: none;
+                                    border-radius: .25rem;
+                                    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+
+
+                                    >option {}
+                                }
+
+
+
+
+                                // 
+                                >button {
+                                    width: 34%;
+                                    display: block;
+                                    margin: 0.5rem auto;
+                                    padding: 0.6rem 2rem;
+                                    background: #007bff;
+                                    border: none;
+                                    border-radius: 4px;
+                                    cursor: pointer;
+                                    color: #fff;
+                                    font-size: 0.9rem;
+                                }
+
+
+                            }
+                        }
+                    }
+
+                    .sign-in {
+                        text-align: center;
+                        margin: 0.5rem;
+
+                        >p {
+                            opacity: 0.7;
+                            font-size: 0.8rem;
+                        }
+
+                        >a {
+                            color: #0630df;
+                            opacity: 0.8;
+                            cursor: pointer;
+                            font-size: 0.8rem;
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 780px) {
+    .register-section {
+        padding: 10rem 0;
+
+        >div {
+            margin: auto;
+
+            >div {
+
+                width: 100%;
+
+                .wise {
+                    width: 100%;
+                    padding: 20px;
+                    border-radius: 5px;
+                    border: 1px solid #ccc;
+                    // margin: 5rem 0;
+
+
+
+                    >h3 {
+                        color: #000;
+                        font-size: 21px;
+                        font-weight: 600;
+                        margin: 0 0 20px 0;
+                        text-align: center;
+                        opacity: 0.8;
+                    }
+
+
+                    >form {
+
+
+                        >div {
+
+                            >div {
+                                padding: 0.4rem;
+
+
+                                // 
+                                >label {
+                                    display: inline-block;
+                                    margin-bottom: .5rem;
+                                    color: #000;
+                                    font-weight: 600;
+
+                                    >span {
+                                        color: red;
+                                    }
+                                }
+
+                                // 
+                                >select {
+                                    display: block;
+                                    width: 100%;
+                                    height: calc(1.5em + .75rem + 2px);
+                                    padding: .375rem .75rem;
+                                    font-size: 13px;
+                                    font-weight: 400;
+                                    line-height: 1.5;
+                                    color: #495057;
+                                    background-color: #fff;
+                                    background-clip: padding-box;
+                                    border: 1px solid #ced4da;
+                                    outline: none;
+                                    border-radius: .25rem;
+                                    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+
+
+                                    >option {}
+                                }
+
+
+
+
+                                // 
+                                >button {
+                                    width: 34%;
+                                    display: block;
+                                    margin: 0.5rem auto;
+                                    padding: 0.6rem 2rem;
+                                    background: #007bff;
+                                    border: none;
+                                    border-radius: 4px;
+                                    cursor: pointer;
+                                    color: #fff;
+                                    font-size: 0.9rem;
+                                }
+
+
+                            }
+                        }
+                    }
+
+                    .sign-in {
+                        text-align: center;
+                        margin: 0.5rem;
+
+                        >p {
+                            opacity: 0.7;
+                            font-size: 0.8rem;
+                        }
+
+                        >a {
+                            color: #0630df;
+                            opacity: 0.8;
+                            cursor: pointer;
+                            font-size: 0.8rem;
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .register-section {
+        padding: 10rem 0;
+
+        >div {
+            margin: auto;
+
+            >div {
+
+                width: 75%;
+
+                .wise {
+                    width: 100%;
+                    padding: 20px;
+                    border-radius: 5px;
+                    border: 1px solid #ccc;
+                    // margin: 5rem 0;
+
+
+
+                    >h3 {
+                        color: #000;
+                        font-size: 15px;
+                        font-weight: 600;
+                        margin: 0 0 20px 0;
+                        text-align: center;
+                        opacity: 0.8;
+                    }
+
+
+                    >form {
+
+
+                        >div {
+
+                            >div {
+                                padding: 0.4rem;
+
+
+                                // 
+                                >label {
+                                    display: inline-block;
+                                    margin-bottom: .5rem;
+                                    color: #000;
+                                    font-weight: 600;
+                                    font-size: 10px;
+
+                                    >span {
+                                        color: red;
+                                    }
+                                }
+
+                                // 
+                                >select {
+                                    display: block;
+                                    width: 100%;
+                                    height: calc(1.5em + .75rem + 2px);
+                                    padding: .375rem .75rem;
+                                    font-size: 10px;
+                                    font-weight: 400;
+                                    line-height: 1.5;
+                                    color: #495057;
+                                    background-color: #fff;
+                                    background-clip: padding-box;
+                                    border: 1px solid #ced4da;
+                                    outline: none;
+                                    border-radius: .25rem;
+                                    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+
+
+                                    >option {}
+                                }
+
+
+
+
+                                // 
+                                >button {
+                                    width: 34%;
+                                    display: block;
+                                    margin: 0.5rem auto;
+                                    padding: 0.4rem 1rem;
+                                    background: #007bff;
+                                    border: none;
+                                    border-radius: 4px;
+                                    cursor: pointer;
+                                    color: #fff;
+                                    font-size: 0.8rem;
+                                }
+
+
+                            }
+                        }
+                    }
+
+                    .sign-in {
+                        text-align: center;
+                        margin: 0.5rem;
+
+                        >p {
+                            opacity: 0.7;
+                            font-size: 0.8rem;
+                        }
+
+                        >a {
+                            color: #0630df;
+                            opacity: 0.8;
+                            cursor: pointer;
+                            font-size: 0.8rem;
+                        }
+                    }
+
+                }
             }
         }
     }

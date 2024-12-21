@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+
 
 const Register = () => {
     return (
@@ -6,9 +6,9 @@ const Register = () => {
             <div>
                 <div>
                     <div className="wise">
-                        <h3>Applicant Dealership Registration Panel</h3>
+                        <h3>Apply For Dealership</h3>
 
-                        <form>
+                        <form action="/submit-form">
                             <div>
 
                                 <div>
@@ -16,7 +16,7 @@ const Register = () => {
                                         State<span>*</span>
                                     </label>
 
-                                    <select name="state" required>
+                                    <select name="state" >
                                         <option value>Select</option>
                                         <option value={"1"}>New Delhi</option>
                                         <option value={"2"}>West Bengal</option>
@@ -36,7 +36,7 @@ const Register = () => {
                                         District<span>*</span>
                                     </label>
 
-                                    <select name="state" required>
+                                    <select name="state" >
                                         <option value>Select</option>
                                         <option value={"1"}>New Delhi</option>
                                         <option value={"2"}>West Bengal</option>
@@ -56,7 +56,7 @@ const Register = () => {
                                         Location<span>*</span>
                                     </label>
 
-                                    <select name="state" required>
+                                    <select name="state" >
                                         <option value>Select</option>
                                         <option value={"1"}>New Delhi</option>
                                         <option value={"2"}>West Bengal</option>
@@ -83,10 +83,6 @@ const Register = () => {
                             </div>
                         </form>
 
-                        <div className="sign-in">
-                            <p>{"Already have a account?"}</p>
-                            <Link to={"/login"}>Login</Link>
-                        </div>
                     </div>
                 </div>
             </div>

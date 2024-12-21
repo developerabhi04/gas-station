@@ -5,6 +5,7 @@ import Footer from "./Components/Footer";
 import Login from "./Components/Pages/Login";
 import Register from "./Components/Pages/Register";
 import Form from "./Components/Pages/Form";
+import NeedHelp from "./Components/Pages/NeedHelp";
 
 
 const App = () => {
@@ -14,7 +15,9 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/apply-dealership" element={<Register />} />
+        <Route path="/need-a-help" element={<NeedHelp />} />
+
         <Route path="/submit-form" element={<Form />} />
       </Routes>
       <Footer />

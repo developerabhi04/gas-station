@@ -1,7 +1,11 @@
 import { Slider } from "6pp";
 import notification from "../../assets/notification.gif";
-import pump1 from "../../assets/3.png";
-import pump2 from "../../assets/automobile-5340093_1280.jpg";
+import pump1 from "../../assets/1 (1).png";
+import pump2 from "../../assets/2 (1).png";
+import pump3 from "../../assets/3 (1).png";
+import Partner from "./Home/Partner";
+import About from "./Home/About";
+import DealershipSection from "./Home/Delership";
 
 // import { Link } from "react-router-dom";
 
@@ -15,6 +19,9 @@ const banners = [
   },
   {
     src: pump2,
+  },
+  {
+    src: pump3,
   }
 ];
 
@@ -97,7 +104,7 @@ const Home = () => {
             <div className="bottom-links-b">
               <ul>
                 <li>
-                  <a>Apply Now</a>
+                  <a>Download Brochure</a>
                 </li>
               </ul>
             </div>
@@ -129,123 +136,14 @@ const Home = () => {
       </section>
 
 
-      <section className="about-section">
-        {/* aboutUs */}
-        <div className="about">
-          <div>
-            <h2>APPLY NOW FOR A PETROL STATION DEALERSHIP OPPORTUNITY</h2>
-            <p>The online application process for the petrol pump dealership will be open for a limited time. Applicants are encouraged to apply for various available locations. While filling out the application, it is crucial to have all the necessary documents scanned and ready to upload, as this will help streamline the process.</p>
-            <p>Applicants must ensure that all details are filled out accurately. Any inconsistencies or incorrect information in the form will lead to immediate rejection, and once rejected, the applicant will not have the option to reapply for the same dealership.</p>
-            <p>It is essential to submit the application within the given timeline, as outlined on the official portal. Any applications submitted after the closing date will not be accepted under any circumstances, and the system will no longer allow access to the application form.</p>
-            <div className="links">
-              <ul>
-                <li>
-                  <a>
-                    <b>For Information Contact: </b>
-                    Divisional Offices
-                  </a>
-                </li>
-                <li>
-                  <a>
-                    <b>Brochure (Click to View) </b>
-                  </a>
-                </li>
-                <li>
-                  <a>
-                    <b>Notice </b>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
 
-          <div className="news-events">
-            <div className="imp-link">
-              <h3>
-                <span>News & Events</span>
-              </h3>
 
-              <ul>
-                <li>
-                  <a>
-                    Phone No.: 022-48903516 (10-5PM).
-                    <span style={{ "color": "red" }}>
-                      Closed {" "}
-                      <img src={notification} alt="img" />
-                    </span>
-                  </a>
-                </li>
+      <About />
+      <Partner />
+      <DealershipSection />
 
-                <li>
-                  <a>
-                    View Notifications & Notices / अधिसूचनाएँ और नोटिस देखें
-                    <span style={{ "color": "red" }}>
-                      Closed {" "}
-                      <img src={notification} alt="img" />
-                    </span>
-                  </a>
-                </li>
 
-                <li>
-                  <a>Last date for submission of application form is 23.12.2024 till 12 midnight / आवेदन पत्र जमा करने की अंतिम तिथि 23.12.2024 रात्रि 12 बजे तक है।
-                    <span style={{ "color": "red" }}>
-                      Closed {" "}
-                      <img src={notification} alt="img" />
-                    </span>
-                  </a>
-                </li>
 
-                <li>
-                  <a>The last date for the application fee is 23.12.2024 till 12 midnight / आवेदन शुल्क जमा करने की अंतिम तिथि 23.12.2024 रात्रि 12 बजे तक है।
-                    <span style={{ "color": "red" }}>
-                      Closed {" "}
-                      <img src={notification} alt="img" />
-                    </span>
-                  </a>
-                </li>
-
-                <li>
-                  <a>The last date for the application fee is 23.12.2024 till 12 midnight / आवेदन शुल्क जमा करने की अंतिम तिथि 23.12.2024 रात्रि 12 बजे तक है।
-                    <span style={{ "color": "red" }}>
-                      Closed {" "}
-                      <img src={notification} alt="img" />
-                    </span>
-                  </a>
-                </li>
-
-                <li>
-                  <a>The last date for the application fee is 23.12.2024 till 12 midnight / आवेदन शुल्क जमा करने की अंतिम तिथि 23.12.2024 रात्रि 12 बजे तक है।
-                    <span style={{ "color": "red" }}>
-                      Closed {" "}
-                      <img src={notification} alt="img" />
-                    </span>
-                  </a>
-                </li>
-
-                <li>
-                  <a>The last date for the application fee is 23.12.2024 till 12 midnight / आवेदन शुल्क जमा करने की अंतिम तिथि 23.12.2024 रात्रि 12 बजे तक है।
-                    <span style={{ "color": "red" }}>
-                      Closed {" "}
-                      <img src={notification} alt="img" />
-                    </span>
-                  </a>
-                </li>
-
-                <li>
-                  <a>Announcement / घोषणाएं
-                    <span style={{ "color": "red" }}>
-                      Closed {" "}
-                      <img src={notification} alt="img" />
-                    </span>
-                  </a>
-                </li>
-
-              </ul>
-
-            </div>
-          </div>
-        </div>
-      </section>
     </>
   )
 }

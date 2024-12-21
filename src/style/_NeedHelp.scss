@@ -1,0 +1,300 @@
+.need-help-section {
+    padding: 9rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 1.2s ease-in-out;
+
+    .help-container {
+        display: flex;
+        max-width: 1200px;
+        width: 100%;
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 30px 50px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease-in-out;
+
+        &:hover {
+            // transform: scale(1.02);
+        }
+
+        .help-info {
+            flex: 1;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            animation: slideInLeft 1s ease;
+
+            h2 {
+                font-size: 2.8rem;
+                margin-bottom: 20px;
+            }
+
+            p {
+                font-size: 1.2rem;
+                line-height: 1.7;
+            }
+        }
+
+        .help-form-container {
+            flex: 1.5;
+            padding: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: slideInRight 1s ease;
+
+            .help-form {
+                width: 100%;
+
+                .form-group {
+                    position: relative;
+                    margin-bottom: 30px;
+
+                    .icon {
+                        position: absolute;
+                        left: 15px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        font-size: 1.5rem;
+                        color: #007bff;
+                        display: flex;
+                        align-items: center;
+                    }
+
+                    input,
+                    textarea {
+                        width: 100%;
+                        padding: 15px 15px 15px 50px;
+                        /* Adjusting padding to accommodate the icon */
+                        border: 2px solid #ccc;
+                        border-radius: 8px;
+                        font-size: 1rem;
+                        transition: all 0.3s ease;
+
+                        &:focus {
+                            border-color: #007bff;
+                            outline: none;
+                            box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+                        }
+                    }
+
+                    textarea {
+                        resize: vertical;
+                    }
+                }
+
+                .submit-btn {
+                    background-color: #007bff;
+                    color: white;
+                    border: none;
+                    padding: 16px 30px;
+                    font-size: 1.1rem;
+                    text-transform: uppercase;
+                    cursor: pointer;
+                    width: 100%;
+                    border-radius: 8px;
+                    transition: background-color 0.3s ease, transform 0.2s ease;
+
+                    &:hover {
+                        background-color: #0056b3;
+                        transform: translateY(-2px);
+                    }
+                }
+            }
+        }
+    }
+
+    // Fade-in animation
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    // Slide animations for left and right
+    @keyframes slideInLeft {
+        from {
+            transform: translateX(-50px);
+            opacity: 0;
+        }
+
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideInRight {
+        from {
+            transform: translateX(50px);
+            opacity: 0;
+        }
+
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+}
+
+
+
+// Responsive adjustments
+@media (max-width: 768px) {
+    .need-help-section {
+        padding: 7rem 1rem;
+
+        .help-container {
+            flex-direction: column;
+
+            .help-info {
+                padding: 20px;
+
+                h2 {
+                    font-size: 1rem;
+                }
+
+                p {
+                    font-size: 0.8rem;
+                }
+            }
+
+            .help-form-container {
+                padding: 40px;
+
+
+                .help-form {
+                    width: 100%;
+
+                    .form-group {
+                        margin-bottom: 15px;
+
+                        .icon {
+                            position: absolute;
+                            left: 15px;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            font-size: 1rem;
+                            color: #007bff;
+                            display: flex;
+                            align-items: center;
+
+                            svg {
+                                font-size: 1rem;
+                            }
+                        }
+
+                        input,
+                        textarea {
+                            width: 100%;
+                            padding: 10px 5px 13px 43px;
+                            /* Adjusting padding to accommodate the icon */
+                            border: 2px solid #ccc;
+                            border-radius: 8px;
+                            font-size: 0.8rem;
+                            transition: all 0.3s ease;
+
+                            &:focus {
+                                border-color: #007bff;
+                                outline: none;
+                                box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+                            }
+                        }
+
+                        textarea {
+                            resize: vertical;
+                        }
+                    }
+
+                    .submit-btn {
+                        background-color: #007bff;
+                        color: white;
+                        border: none;
+                        padding: 8px 15px;
+                        font-size: 1rem;
+                        text-transform: uppercase;
+                        cursor: pointer;
+                        width: 100%;
+                        border-radius: 8px;
+                        transition: background-color 0.3s ease, transform 0.2s ease;
+
+                        &:hover {
+                            background-color: #0056b3;
+                            transform: translateY(-2px);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+@media (max-width: 480px) {
+    .need-help-section {
+        padding: 5rem 1rem;
+
+        .help-container {
+            flex-direction: column;
+
+            .help-info {
+                padding: 15px;
+
+                h2 {
+                    font-size: 0.8rem;
+                }
+
+                p {
+                    font-size: 0.6rem;
+                }
+            }
+
+            .help-form-container {
+                padding: 20px;
+
+
+                .help-form {
+                    .form-group {
+
+                        .icon {
+                            font-size: 1rem;
+
+                            svg {
+                                font-size: 1rem;
+                            }
+                        }
+
+                        input,
+                        textarea {
+                            width: 100%;
+                            padding: 10px 5px 13px 43px;
+                            font-size: 0.7rem;
+
+                        }
+
+                        textarea {
+                            resize: vertical;
+                        }
+                    }
+
+                    .submit-btn {
+                        padding: 8px 15px;
+                        font-size: 0.8rem;
+                    }
+                }
+            }
+        }
+    }
+}

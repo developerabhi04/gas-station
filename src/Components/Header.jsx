@@ -1,6 +1,6 @@
+import { Help, Settings } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import logo from "../assets/logoo.png";
-import { Person, Settings } from "@mui/icons-material";
 
 const Header = () => {
     return (
@@ -23,12 +23,17 @@ const Header = () => {
                         <div>
                             <ul>
                                 <li>
-                                    <Person />
-                                    <Link to={"/"}>Apply Dealership</Link>
+
+                                    <Link to={"/need-a-help"}>
+                                        <Help />
+                                        Need a Help?
+                                    </Link>
                                 </li>
                                 <li>
-                                    <Settings />
-                                    <Link to={"/login"}>Applicant Login</Link>
+                                    <Link to={"/apply-dealership"}>
+                                        <Settings />
+                                        Apply Dealership
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
