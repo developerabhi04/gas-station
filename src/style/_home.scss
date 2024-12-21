@@ -423,7 +423,7 @@
 
 // third section
 .about-section {
-    margin: 3rem 5rem;
+    margin: 3rem 2rem;
     padding: 2.5rem;
     // background-color: #f4f4f9;
     border-radius: 10px;
@@ -442,16 +442,16 @@
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 
-        h2 {
+            h2 {
                 font-size: 2rem;
                 color: #2c2d34;
                 font-weight: 600;
                 text-align: center;
                 margin-bottom: 1.5rem;
                 padding-bottom: 0.5rem;
-                border-bottom: 2px solid #e77e05;
+                border-bottom: 2px solid #e70505;
             }
-        
+
             p {
                 font-size: 1.1rem;
                 line-height: 1.6;
@@ -460,6 +460,7 @@
                 margin: 1.5rem 0;
                 padding: 0 2rem;
             }
+
             .links {
                 margin: 2rem 1rem;
 
@@ -477,7 +478,7 @@
                         width: 100%;
                         margin: 1.5rem 0;
                         padding: 1rem;
-                        border-left: 5px solid #e77e05;
+                        border-left: 5px solid #e70505;
                         background-color: #fafafa;
                         border-radius: 8px;
                         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
@@ -504,7 +505,7 @@
                             transition: all ease-in-out 0.5s;
 
                             &:hover {
-                                color: #e77e05;
+                                color: #e70505;
                             }
                         }
 
@@ -520,7 +521,7 @@
 
         .news-events {
             width: 30%;
-            border: 1px solid #e77e05;
+            border: 1px solid #e70505;
             border-radius: 10px;
             padding: 0.6rem;
             background-color: #fff;
@@ -533,7 +534,7 @@
                 >h3 {
                     width: 100%;
                     text-align: center;
-                    background: linear-gradient(90deg, #e77e05, #f1a331);
+                    background: linear-gradient(90deg, #e70505, #e81c1c99);
                     padding: 0.2rem;
                     border-radius: 8px;
 
@@ -552,6 +553,23 @@
                     margin: 15px 0 0 0;
                     overflow-y: scroll;
                     height: 70vh;
+
+
+                    overflow-y: auto;
+                    scrollbar-width: thin;
+                    scrollbar-color: #e70505 #f4f4f4;
+
+                    &::-webkit-scrollbar {
+                        width: 5px;
+                    }
+
+                    &::-webkit-scrollbar-track {
+                        background-color: #f4f4f4;
+                    }
+
+                    &::-webkit-scrollbar-thumb {
+                        background-color: #e62a2a;
+                    }
 
                     >li {
                         cursor: pointer;
@@ -576,13 +594,14 @@
                             position: relative;
                             padding-left: 40px;
                             background: url(../assets/bullet.png) no-repeat left center;
-                            background-size: 20px;
+                            background-size: 15px;
+
 
                             >span {
                                 display: flex;
                                 align-items: center;
                                 gap: 10px;
-                                color: #e77e05;
+                                color: #e70505;
 
                                 >img {
                                     width: 15px;
