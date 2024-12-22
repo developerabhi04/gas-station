@@ -715,7 +715,7 @@
 
 .dealership-section {
     padding: 50px 20px;
-    background-color: #f9f9f9;
+    // background-color: #f9f9f9;
     text-align: center;
 
     .dealership-container {
@@ -723,10 +723,10 @@
         margin: 0 auto;
         display: flex;
         flex-direction: column;
-        gap: 40px;
+        // gap: 40px;
 
         @media (min-width: 768px) {
-            gap: 60px;
+            // gap: 60px;
         }
     }
 
@@ -751,7 +751,7 @@
         background-color: #fff;
         padding: 30px;
         border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        // box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         text-align: left;
 
         @media (min-width: 768px) {
