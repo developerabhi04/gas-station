@@ -1,47 +1,57 @@
 const DealershipSection = () => {
     return (
-        <section className="dealership">
-            <div className="dealership-wrapper">
+        <section className="dealership-section">
+            <div className="dealership-container">
 
-                {/* What We’re Looking For */}
-                <div className="dealership-block">
-                    <h2 className="dealership-title">What We’re Looking For</h2>
+                {/* Hero Section */}
+                <div className="dealership-hero">
+                    <h2>Partner with Us</h2>
+                    <p>Join hands to fuel India’s growth with our trusted dealership model.</p>
+                </div>
+
+                {/* Requirements Section */}
+                <div className="dealership-card">
+                    <div className="dealership-card-header">
+                        <h3>What We’re Looking For</h3>
+                    </div>
                     <ul className="dealership-list">
-                        <li>Passion for delivering top-notch customer service.</li>
-                        <li>Possession of suitable land or willingness to acquire it.</li>
-                        <li>Willingness to invest in infrastructure and operations.</li>
-                        <li>Commitment to a sustainable and prosperous future.</li>
+                        <li>Customer service excellence</li>
+                        <li>Suitable land or interest to acquire</li>
+                        <li>Willingness to invest in operations</li>
+                        <li>Commitment to a sustainable future</li>
                     </ul>
                 </div>
 
-                {/* How to Apply for a Dealership */}
-                <div className="dealership-block">
-                    <h2 className="dealership-title">How to Apply for a Dealership</h2>
-                    <div className="dealership-steps">
-                        <div className="step">
-                            <h4>Step 1: Submit Your Application</h4>
-                            <p>Fill out our online form with details about your location, experience, and investment capacity.</p>
+                {/* Steps Section */}
+                <div className="dealership-card">
+                    <div className="dealership-card-header">
+                        <h3>How to Apply for a Dealership</h3>
+                    </div>
+                    <div className="dealership-grid">
+                        <div className="dealership-step">
+                            <h4>1. Submit Application</h4>
+                            <p>Provide details about your location and investment capacity.</p>
                         </div>
-                        <div className="step">
-                            <h4>Step 2: Site Inspection and Approval</h4>
-                            <p>Our team will assess the location to ensure it meets our technical and commercial requirements.</p>
+                        <div className="dealership-step">
+                            <h4>2. Site Inspection</h4>
+                            <p>We’ll review and inspect your proposed site for approval.</p>
                         </div>
-                        <div className="step">
-                            <h4>Step 3: Agreement and Onboarding</h4>
-                            <p>Once approved, sign the dealership agreement and undergo comprehensive training.</p>
+                        <div className="dealership-step">
+                            <h4>3. Agreement</h4>
+                            <p>Sign the dealership agreement and complete onboarding.</p>
                         </div>
-                        <div className="step">
-                            <h4>Step 4: Station Setup and Launch</h4>
-                            <p>We’ll guide you through building and launching your fuel station, including infrastructure and marketing.</p>
+                        <div className="dealership-step">
+                            <h4>4. Launch</h4>
+                            <p>Begin station setup with our guidance and open your station.</p>
                         </div>
                     </div>
                 </div>
 
-                {/* Join Us Section */}
-                <div className="dealership-block">
-                    <h2 className="dealership-title">Join Us in Fueling India’s Growth</h2>
-                    <p>India’s energy needs are growing, and so is the opportunity for dynamic leaders to drive this growth. By joining our dealership program, you’re not just starting a business—you’re becoming part of a movement to empower communities, drive progress, and create a sustainable future.</p>
-                    <p>Take the first step today and fuel your entrepreneurial dreams with us.</p>
+                {/* Call to Action Section */}
+                <div className="dealership-cta">
+                    <h3>Fuel Your Future with Us</h3>
+                    <p>Start your entrepreneurial journey and help power India’s energy future.</p>
+                    <button className="dealership-button">Get Started</button>
                 </div>
 
             </div>

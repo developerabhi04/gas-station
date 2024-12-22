@@ -19,13 +19,13 @@
                 // min-height: 320px;
                 width: 100%;
                 // margin-top: 0px;
-                border: 1px solid #027bc4;
+                border: 1px solid #007bff;
 
 
                 h3 {
                     border-radius: 10px 10px 0 0;
                     width: 100%;
-                    background-color: #027bc4;
+                    background-color: #007bff;
                     text-align: center;
                     color: #fff;
                     position: relative;
@@ -33,7 +33,7 @@
                     // padding: 0.3rem;
 
                     >span {
-                        background: #027bc4;
+                        background: #007bff;
                         font-size: 15px;
                         color: #fff;
                         padding: 3px 10px;
@@ -427,8 +427,8 @@
     padding: 2.5rem;
     // background-color: #f4f4f9;
     border-radius: 10px;
-    border: 1px solid #ddd;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    // border: 1px solid #ddd;
+    // box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
     // box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 
     .about {
@@ -626,31 +626,31 @@
 
 // partner
 .partner-section {
-    padding: 50px 20px;
+    padding: 60px 20px;
     background-color: #f4f7fa;
     display: flex;
     flex-direction: column;
     align-items: center;
 
     .partner-header {
-        margin-bottom: 40px;
+        margin-bottom: 50px;
 
         h2 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             color: #2c3e50;
             text-align: center;
-            position: relative;
-            margin-bottom: 20px;
-            font-weight: 600;
             text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            position: relative;
 
             &::after {
-                content: '';
-                width: 60px;
+                content: "";
+                width: 80px;
                 height: 4px;
-                background-color: #e67e22;
+                background-color: #007bff;
                 display: block;
-                margin: 10px auto 0;
+                margin: 15px auto 0;
                 border-radius: 2px;
             }
         }
@@ -659,40 +659,51 @@
     .partner-cards {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
+        gap: 40px;
         width: 100%;
         max-width: 1200px;
+        padding: 0 20px;
 
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
             grid-template-columns: 1fr;
         }
 
         .partner-card {
             background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            transition: box-shadow 0.3s ease-in-out;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
 
             &:hover {
-                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+                transform: translateY(-10px);
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            }
+
+            .partner-card-img {
+                img {
+                    width: 100%;
+                    height: 250px;
+                    object-fit: cover;
+                    border-bottom: 4px solid #007bff;
+                }
             }
 
             .partner-card-content {
+                padding: 20px;
                 text-align: center;
 
                 h3 {
-                    font-size: 1.5rem;
-                    color: #3498db;
+                    font-size: 1.8rem;
+                    color: #007bff;
                     margin-bottom: 15px;
-                    font-weight: 500;
+                    font-weight: 600;
                 }
 
                 p {
                     font-size: 1rem;
                     color: #7f8c8d;
-                    line-height: 1.8;
-                    margin-bottom: 0;
+                    line-height: 1.6;
                 }
             }
         }
@@ -702,85 +713,137 @@
 
 
 
-.dealership {
-    padding: 60px 20px;
-    background-color: #f4f4f9;
+.dealership-section {
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
 
-    .dealership-wrapper {
+    .dealership-container {
         max-width: 1200px;
         margin: 0 auto;
         display: flex;
         flex-direction: column;
-        gap: 50px;
+        gap: 40px;
 
-        @media (min-width: 1024px) {
-            gap: 70px;
+        @media (min-width: 768px) {
+            gap: 60px;
         }
     }
 
-    .dealership-block {
-        background-color: #fff;
+    .dealership-hero {
+        background: linear-gradient(135deg, #007bff, #0056b3);
+        padding: 40px;
         border-radius: 12px;
+        color: #fff;
+
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+    }
+
+    .dealership-card {
+        background-color: #fff;
         padding: 30px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: left;
 
         @media (min-width: 768px) {
             padding: 40px;
         }
 
-        .dealership-title {
-            font-size: 1.8rem;
-            color: #333;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #0073e6;
+        .dealership-card-header {
+            border-bottom: 2px solid #007bff;
             padding-bottom: 10px;
+            margin-bottom: 20px;
 
-            @media (min-width: 768px) {
-                font-size: 2.2rem;
-            }
-        }
-
-        p,
-        li {
-            font-size: 1.1rem;
-            color: #555;
-            line-height: 1.7;
-            margin-bottom: 15px;
-
-            @media (min-width: 768px) {
-                font-size: 1.2rem;
+            h3 {
+                font-size: 1.8rem;
+                color: #333;
             }
         }
 
         .dealership-list {
-            list-style-type: disc;
-            padding-left: 20px;
+            list-style-type: none;
+            padding: 0;
+
+            li {
+                font-size: 1.1rem;
+                color: #555;
+                margin-bottom: 15px;
+                display: flex;
+                align-items: center;
+
+                &::before {
+                    content: '✔';
+                    color: #007bff;
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+
+    .dealership-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+
+        @media (min-width: 768px) {
+            grid-template-columns: repeat(2, 1fr);
         }
 
-        .dealership-steps {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
+        .dealership-step {
+            background-color: #f1f1f1;
+            padding: 20px;
+            border-radius: 8px;
 
-            @media (min-width: 768px) {
-                grid-template-columns: 1fr 1fr;
+            h4 {
+                font-size: 1.2rem;
+                color: #007bff;
+                margin-bottom: 10px;
             }
 
-            .step {
-                background-color: #fafafa;
-                padding: 20px;
-                border-radius: 8px;
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            p {
+                font-size: 1rem;
+                color: #555;
+            }
+        }
+    }
 
-                h4 {
-                    font-size: 1.2rem;
-                    color: #0073e6;
-                    margin-bottom: 10px;
-                }
+    .dealership-cta {
+        background-color: #007bff;
+        padding: 30px;
+        border-radius: 10px;
+        color: #fff;
 
-                p {
-                    margin-bottom: 0;
-                }
+        h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .dealership-button {
+            background-color: #fff;
+            color: #007bff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: #e0e0e0;
             }
         }
     }
