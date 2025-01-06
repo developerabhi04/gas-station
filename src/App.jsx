@@ -12,7 +12,7 @@ import ProtectedURL from "./Auth/ProtectedURL";
 const Home = lazy(() => import("./Components/Pages/Home"));
 const Login = lazy(() => import("./Components/Pages/Login"));
 const Form = lazy(() => import("./Components/Pages/Form"));
-const NeedHelp = lazy(() => import("./Components/Pages/Needhelp"));
+const NeedHelp = lazy(() => import("./Components/Pages/NeedHelp"));
 const Register = lazy(() => import("./Components/Pages/Register"));
 const FormSubmitedSucessfully = lazy(() => import("./Components/Pages/FormSubmitedSucessfully"));
 
@@ -33,12 +33,10 @@ const App = () => {
       <Routes>
 
         <Route element={<ChildrenOutlet />}>
-
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<ProtectedURL><Login /></ProtectedURL>} />
           <Route path="/apply-dealership" element={<ProtectedURL><Register /></ProtectedURL>} />
-          <Route path="/need-a-help" element={<NeedHelp />} />
-
+          <Route path="/need-a-help" element={<ProtectedURL><NeedHelp /></ProtectedURL>} />
           <Route path="/apply-dealership" element={<ProtectedURL><Register /></ProtectedURL>} />
           <Route path="/submit-form" element={<ProtectedURL><Form /></ProtectedURL>} />
           <Route path="/form-Submited-Sucessfully" element={<ProtectedURL><FormSubmitedSucessfully /></ProtectedURL>} />
