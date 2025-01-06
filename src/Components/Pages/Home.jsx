@@ -8,69 +8,70 @@ import About from "./Home/About";
 import DealershipSection from "./Home/Delership";
 import { Helmet } from "react-helmet-async";
 
-// Banners Array
 const banners = [
   {
     src: pump1,
-    alt: "Petrol Pump 1",
+    alt: "Petrol Pump 1 - Prime Petrol Distributors"
   },
   {
     src: pump2,
-    alt: "Petrol Pump 2",
+    alt: "Petrol Pump 2 - Prime Petrol Distributors"
   },
   {
     src: pump3,
-    alt: "Petrol Pump 3",
-  },
+    alt: "Petrol Pump 3 - Prime Petrol Distributors"
+  }
 ];
 
 const Home = () => {
   return (
     <>
+      {/* SEO Metadata using Helmet */}
       <Helmet>
-        <title>Home - Prime Petrol Distributors</title>
-        <meta name="description" content="Prime Petrol Distributors offers a wide range of petrol pump dealership opportunities across India. Apply online today." />
-        <meta name="keywords" content="petrol pump dealership, KSK dealership, fuel distribution, India petrol pump, fuel stations, dealership application" />
+        <title>Prime Petrol Distributors - Apply for Petrol Pump Dealership</title>
+        <meta name="description" content="Apply for a petrol pump dealership with Prime Petrol Distributors. View the latest updates and learn more about our services." />
+        <meta name="keywords" content="petrol pump dealership, fuel station, fuel distributors, Prime Petrol, dealership application" />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://www.yourwebsite.com/home" />
+        <link rel="canonical" href="https://www.primepetroldistributors.com/home" />
 
-        {/* Open Graph meta tags for social media */}
-        <meta property="og:title" content="Prime Petrol Distributors" />
-        <meta property="og:description" content="Apply for petrol pump dealership with Prime Petrol Distributors across various locations in India." />
-        <meta property="og:url" content="https://www.yourwebsite.com/home" />
+        {/* Open Graph Metadata for Social Sharing */}
+        <meta property="og:title" content="Prime Petrol Distributors - Apply for Petrol Pump Dealership" />
+        <meta property="og:description" content="Apply for a petrol pump dealership with Prime Petrol Distributors. Learn more about our services and the latest updates." />
         <meta property="og:image" content={pump1} />
+        <meta property="og:url" content="https://www.primepetroldistributors.com/home" />
         <meta property="og:type" content="website" />
 
-        {/* Twitter Card meta tags */}
+        {/* Twitter Card Metadata */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Prime Petrol Distributors" />
-        <meta name="twitter:description" content="Apply for petrol pump dealership with Prime Petrol Distributors across India." />
+        <meta name="twitter:title" content="Prime Petrol Distributors - Apply for Petrol Pump Dealership" />
+        <meta name="twitter:description" content="Apply for a petrol pump dealership with Prime Petrol Distributors." />
         <meta name="twitter:image" content={pump1} />
       </Helmet>
 
+      {/* Main Section */}
       <section className="home-section">
         <div className="home">
           {/* Notification Section */}
           <div className="Notification">
             <div className="whats-new">
-              <h3><span>Online Application</span></h3>
+              <h1>Online Application</h1>
               <div className="categories">
                 <div className="inner_categories">
                   <ul>
-                    {/* Notifications */}
+                    {/* List of Notifications */}
                     {[
-                      { state: "Andaman Nicobar", status: "Closed" },
-                      { state: "Arunachal Pradesh", status: "Closed" },
-                      { state: "Assam", status: "Closed" },
-                      { state: "Delhi", status: "Closed" },
-                      { state: "Goa", status: "Closed" }
-                    ].map((item, index) => (
+                      "Andaman Nicobar",
+                      "Arunachal Pradesh",
+                      "Assam",
+                      "Delhi",
+                      "Goa"
+                    ].map((location, index) => (
                       <li key={index}>
-                        <a href="/details">
-                          Advertisement Locations of Petrol Pump - KSK Dealership in {item.state} -
+                        <a href={`/dealership/${location.toLowerCase().replace(/\s/g, "-")}`}>
+                          Advertisement Locations of Petrol Pump - KSK Dealership in {location} -
                           <span style={{ color: "red" }}>
-                            {item.status} {" "}
-                            <img src={notification} alt="notification icon" />
+                            Closed{" "}
+                            <img src={notification} alt={`Notification for ${location}`} />
                           </span>
                         </a>
                       </li>
@@ -79,11 +80,11 @@ const Home = () => {
                 </div>
               </div>
             </div>
-
-            {/* Brochure Download */}
             <div className="bottom-links-b">
               <ul>
-                <li><a href="/brochure.pdf" download>Download Brochure</a></li>
+                <li>
+                  <a href="/download-brochure">Download Brochure</a>
+                </li>
               </ul>
             </div>
           </div>
@@ -93,7 +94,8 @@ const Home = () => {
             autoplay
             autoplayDuration={1500}
             showNav={false}
-            images={banners.map(banner => ({ src: banner.src, alt: banner.alt }))}
+            images={banners.map(banner => banner.src)}
+            alt={banners.map(banner => banner.alt)}
           />
         </div>
       </section>
@@ -116,6 +118,6 @@ const Home = () => {
       <DealershipSection />
     </>
   );
-};
+}
 
 export default Home;

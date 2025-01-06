@@ -6,6 +6,7 @@ import AdminRouteGuard from "./Auth/AdminRouteGuard"
 import ProtectedAdminRoute from "./Auth/ProtectedAdminRoute";
 import { lazy } from "react";
 import ProtectedURL from "./Auth/ProtectedURL";
+import ErrorBoundary from "./Auth/ErrorBoundary";
 
 
 // Code-Spliting
@@ -30,59 +31,61 @@ const NotFound = lazy(() => import("./Components/NotFound"));
 const App = () => {
   return (
     <BrowserRouter>
+      <ErrorBoundary>
+        <Routes>
+          <Route element={<ChildrenOutlet />}>
+            <Route path="/" element={<Home />} />
 
-      <Routes>
-        <Route element={<ChildrenOutlet />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<ProtectedURL><Login /></ProtectedURL>} />
-          <Route path="/apply-dealership" element={<ProtectedURL><Register /></ProtectedURL>} />
-          <Route path="/need-a-help" element={<ProtectedURL><NeedHelp /></ProtectedURL>} />
-          <Route path="/apply-dealership" element={<ProtectedURL><Register /></ProtectedURL>} />
-          <Route path="/submit-form" element={<ProtectedURL><Form /></ProtectedURL>} />
-          <Route path="/form-Submited-Sucessfully" element={<ProtectedURL><FormSubmitedSucessfully /></ProtectedURL>} />
-        </Route>
+            <Route path="/login" element={<ProtectedURL><Login /></ProtectedURL>} />
+            <Route path="/apply-dealership" element={<ProtectedURL><Register /></ProtectedURL>} />
+            <Route path="/need-a-help" element={<ProtectedURL><NeedHelp /></ProtectedURL>} />
+            <Route path="/apply-dealership" element={<ProtectedURL><Register /></ProtectedURL>} />
+            <Route path="/submit-form" element={<ProtectedURL><Form /></ProtectedURL>} />
+            <Route path="/form-Submited-Sucessfully" element={<ProtectedURL><FormSubmitedSucessfully /></ProtectedURL>} />
+          </Route>
 
-        {/* Admin-dashboard */}
-        <Route path="/admin" element={
-          <AdminRouteGuard>
-            <AdminLogin />
-          </AdminRouteGuard>
-        } />
+          {/* Admin-dashboard */}
+          <Route path="/admin" element={
+            <AdminRouteGuard>
+              <AdminLogin />
+            </AdminRouteGuard>
+          } />
 
-        <Route path="/admin/dashboard" element={
-          <ProtectedAdminRoute>
-            <Dashboard />
-          </ProtectedAdminRoute>
-        } />
+          <Route path="/admin/dashboard" element={
+            <ProtectedAdminRoute>
+              <Dashboard />
+            </ProtectedAdminRoute>
+          } />
 
-        <Route path="/admin/form-data" element={
-          <ProtectedAdminRoute>
-            <FormManagement />
-          </ProtectedAdminRoute>
-        } />
+          <Route path="/admin/form-data" element={
+            <ProtectedAdminRoute>
+              <FormManagement />
+            </ProtectedAdminRoute>
+          } />
 
-        <Route path="/admin/form-data/:id" element={
-          <ProtectedAdminRoute>
-            <FormManagementView />
-          </ProtectedAdminRoute>
-        } />
+          <Route path="/admin/form-data/:id" element={
+            <ProtectedAdminRoute>
+              <FormManagementView />
+            </ProtectedAdminRoute>
+          } />
 
-        <Route path="/admin/users-management" element={
-          <ProtectedAdminRoute>
-            <UserManagement />
-          </ProtectedAdminRoute>
-        } />
+          <Route path="/admin/users-management" element={
+            <ProtectedAdminRoute>
+              <UserManagement />
+            </ProtectedAdminRoute>
+          } />
 
-        <Route path="/admin/export-data" element={
-          <ProtectedAdminRoute>
-            <ExportData />
-          </ProtectedAdminRoute>
-        } />
+          <Route path="/admin/export-data" element={
+            <ProtectedAdminRoute>
+              <ExportData />
+            </ProtectedAdminRoute>
+          } />
 
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
 
-      <Toaster />
+        <Toaster />
+      </ErrorBoundary>
     </BrowserRouter>
   )
 }
