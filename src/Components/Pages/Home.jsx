@@ -29,22 +29,40 @@ const Home = () => {
       {/* SEO Metadata using Helmet */}
       <Helmet>
         <title>Prime Petrol Distributors - Apply for Petrol Pump Dealership</title>
-        <meta name="description" content="Apply for a petrol pump dealership with Prime Petrol Distributors. View the latest updates and learn more about our services." />
-        <meta name="keywords" content="petrol pump dealership, fuel station, fuel distributors, Prime Petrol, dealership application" />
+        <meta
+          name="description"
+          content="Apply for a petrol pump dealership with Prime Petrol Distributors. View the latest updates and learn more about our services."
+        />
+        <meta
+          name="keywords"
+          content="petrol pump dealership, fuel station, fuel distributors, Prime Petrol, dealership application"
+        />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://www.primepetroldistributors.com/home" />
+        <link rel="canonical" href="https://gas-station-front.vercel.app" />
 
         {/* Open Graph Metadata for Social Sharing */}
-        <meta property="og:title" content="Prime Petrol Distributors - Apply for Petrol Pump Dealership" />
-        <meta property="og:description" content="Apply for a petrol pump dealership with Prime Petrol Distributors. Learn more about our services and the latest updates." />
+        <meta
+          property="og:title"
+          content="Prime Petrol Distributors - Apply for Petrol Pump Dealership"
+        />
+        <meta
+          property="og:description"
+          content="Apply for a petrol pump dealership with Prime Petrol Distributors. Learn more about our services and the latest updates."
+        />
         <meta property="og:image" content={pump1} />
-        <meta property="og:url" content="https://www.primepetroldistributors.com/home" />
+        <meta property="og:url" content="https://gas-station-front.vercel.app" />
         <meta property="og:type" content="website" />
 
         {/* Twitter Card Metadata */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Prime Petrol Distributors - Apply for Petrol Pump Dealership" />
-        <meta name="twitter:description" content="Apply for a petrol pump dealership with Prime Petrol Distributors." />
+        <meta
+          name="twitter:title"
+          content="Prime Petrol Distributors - Apply for Petrol Pump Dealership"
+        />
+        <meta
+          name="twitter:description"
+          content="Apply for a petrol pump dealership with Prime Petrol Distributors."
+        />
         <meta name="twitter:image" content={pump1} />
       </Helmet>
 

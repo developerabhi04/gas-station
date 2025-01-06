@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { server } from "../../main";
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
+import { Helmet } from 'react-helmet-async';
 
 
 const NeedHelp = () => {
@@ -120,73 +121,132 @@ const NeedHelp = () => {
   };
 
   return (
-    <section className="need-help-section">
-      <div className="help-container">
-        <div className="help-info">
-          <h2>Need Help?</h2>
-          <p>We are ready to assist you! Provide your details and our support team will reach out as soon as possible. You can also call us for immediate assistance.</p>
+    <>
+      <Helmet>
+        <title>Prime Petrol Distributors - Contact Form for Petrol Pump Dealership</title>
+        <meta name="description" content="contact Form for a petrol pump dealership with Prime Petrol Distributors. View the latest updates and learn more about our services." />
+        <meta name="keywords" content="petrol pump dealership, fuel station, fuel distributors, Prime Petrol, dealership application" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://gas-station-front.vercel.app" />
+
+        {/* Open Graph Metadata for Social Sharing */}
+        <meta property="og:title" content="Prime Petrol Distributors - contact Form for Petrol Pump Dealership" />
+        <meta property="og:description" content="contact Form for a petrol pump dealership with Prime Petrol Distributors. Learn more about our services and the latest updates." />
+        <meta property="og:image" content="https://gas-station-front.vercel.app/images/pump1.jpg" />
+        <meta property="og:image:alt" content="Prime Petrol pump station dealership application" />
+        <meta property="og:url" content="https://gas-station-front.vercel.app/" />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter Card Metadata */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Prime Petrol Distributors - contact Form for Petrol Pump Dealership" />
+        <meta name="twitter:description" content="contact Form for a petrol pump dealership with Prime Petrol Distributors." />
+        <meta name="twitter:image" content="https://gas-station-front.vercel.app/images/pump1.jpg" />
+
+        {/* Structured Data: Organization Info */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Prime Petrol Distributors",
+            "url": "https://gas-station-front.vercel.app",
+            "logo": "https://gas-station-front.vercel.app/images/logo.png",
+            "sameAs": [
+              "https://www.facebook.com/prime-petrol",
+              "https://twitter.com/prime-petrol"
+            ]
+          })}
+        </script>
+
+        {/* Structured Data: Dealership Offer */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Offer",
+            "name": "Petrol Pump Dealership",
+            "description": "Contact Form for a petrol pump dealership with Prime Petrol Distributors.",
+            "url": "https://gas-station-front.vercel.app/need-a-help",
+            "eligibleRegion": "IN",
+            "seller": {
+              "@type": "Organization",
+              "name": "Prime Petrol Distributors"
+            }
+          })}
+        </script>
+
+        {/* Mobile-friendly meta tag */}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Helmet>
+
+
+      <section className="need-help-section">
+        <div className="help-container">
+          <div className="help-info">
+            <h2>Need Help?</h2>
+            <p>We are ready to assist you! Provide your details and our support team will reach out as soon as possible. You can also call us for immediate assistance.</p>
+          </div>
+          <div className="help-form-container">
+            <form className="help-form" onSubmit={submitForm}>
+              <div className="form-group">
+                <div className="icon"><PersonIcon /></div>
+                <input
+                  type="text"
+                  name="name"
+                  value={name}
+                  onChange={handleNameChange}
+                  placeholder="Your Name"
+                  required
+                />
+                {nameError && <p className="error">{nameError}</p>}
+              </div>
+
+              <div className="form-group">
+                <div className="icon"><EmailIcon /></div>
+                <input
+                  type="email"
+                  name="email"
+                  value={email}
+                  onChange={handleEmailChange}
+                  placeholder="Your Email"
+                  required
+                />
+                {emailError && <p className="error">{emailError}</p>}
+              </div>
+
+              <div className="form-group">
+                <div className="icon"><PhoneIcon /></div>
+                <input
+                  type="number"
+                  name="phoneNumber"
+                  value={phoneNumber}
+                  onChange={handlePhoneNumberChange}
+                  placeholder="Your Phone Number"
+                  required
+                />
+                {phoneNumberError && <p className="error">{phoneNumberError}</p>}
+              </div>
+
+              <div className="form-group">
+                <div className="icon"><MessageIcon /></div>
+                <textarea
+                  name="dropMessage"
+                  value={dropMessage}
+                  onChange={handleDropMessageChange}
+                  placeholder="Your Message"
+                  rows="5"
+                  required
+                ></textarea>
+                {dropMessageError && <p className="error">{dropMessageError}</p>}
+              </div>
+
+              <button type="submit" className="submit-btn" disabled={isSubmitting}>
+                {isSubmitting ? "Submitting..." : "Send Now"}
+              </button>
+            </form>
+          </div>
         </div>
-        <div className="help-form-container">
-          <form className="help-form" onSubmit={submitForm}>
-            <div className="form-group">
-              <div className="icon"><PersonIcon /></div>
-              <input
-                type="text"
-                name="name"
-                value={name}
-                onChange={handleNameChange}
-                placeholder="Your Name"
-                required
-              />
-              {nameError && <p className="error">{nameError}</p>}
-            </div>
-
-            <div className="form-group">
-              <div className="icon"><EmailIcon /></div>
-              <input
-                type="email"
-                name="email"
-                value={email}
-                onChange={handleEmailChange}
-                placeholder="Your Email"
-                required
-              />
-              {emailError && <p className="error">{emailError}</p>}
-            </div>
-
-            <div className="form-group">
-              <div className="icon"><PhoneIcon /></div>
-              <input
-                type="number"
-                name="phoneNumber"
-                value={phoneNumber}
-                onChange={handlePhoneNumberChange}
-                placeholder="Your Phone Number"
-                required
-              />
-              {phoneNumberError && <p className="error">{phoneNumberError}</p>}
-            </div>
-
-            <div className="form-group">
-              <div className="icon"><MessageIcon /></div>
-              <textarea
-                name="dropMessage"
-                value={dropMessage}
-                onChange={handleDropMessageChange}
-                placeholder="Your Message"
-                rows="5"
-                required
-              ></textarea>
-              {dropMessageError && <p className="error">{dropMessageError}</p>}
-            </div>
-
-            <button type="submit" className="submit-btn" disabled={isSubmitting}>
-              {isSubmitting ? "Submitting..." : "Send Now"}
-            </button>
-          </form>
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

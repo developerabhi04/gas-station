@@ -39,7 +39,6 @@ const App = () => {
             <Route path="/login" element={<ProtectedURL><Login /></ProtectedURL>} />
             <Route path="/apply-dealership" element={<ProtectedURL><Register /></ProtectedURL>} />
             <Route path="/need-a-help" element={<ProtectedURL><NeedHelp /></ProtectedURL>} />
-            <Route path="/apply-dealership" element={<ProtectedURL><Register /></ProtectedURL>} />
             <Route path="/submit-form" element={<ProtectedURL><Form /></ProtectedURL>} />
             <Route path="/form-Submited-Sucessfully" element={<ProtectedURL><FormSubmitedSucessfully /></ProtectedURL>} />
           </Route>
