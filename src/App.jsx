@@ -17,12 +17,12 @@ const Register = lazy(() => import("./Components/Pages/Register"));
 const FormSubmitedSucessfully = lazy(() => import("./Components/Pages/FormSubmitedSucessfully"));
 
 // Admin
-const AdminLogin = lazy(() => import("./Components/Admin/AdminLogin"));
-const Dashboard = lazy(() => import("./Components/Admin/Dashboard"));
-const UserManagement = lazy(() => import("./Components/Admin/UsersManagment"));
-const ExportData = lazy(() => import("./Components/Admin/ExportData"));
-const FormManagement = lazy(() => import("./Components/Admin/FormManagement"));
-const FormManagementView = lazy(() => import("./Components/Admin/FormManagementView"));
+const AdminLogin = lazy(() => import("./Components/admin/AdminLogin"));
+const Dashboard = lazy(() => import("./Components/admin/Dashboard"));
+const UserManagement = lazy(() => import("./Components/admin/UsersManagment"));
+const ExportData = lazy(() => import("./Components/admin/ExportData"));
+const FormManagement = lazy(() => import("./Components/admin/FormManagement"));
+const FormManagementView = lazy(() => import("./Components/admin/FormManagementView"));
 const NotFound = lazy(() => import("./Components/NotFound"));
 
 
