@@ -37,7 +37,7 @@ const UserManagement = () => {
     // Handle delete of user
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:4000/api/v1/need/delete/${id}`);  // Make sure this endpoint is correct
+            await axios.delete(`${server}/need/delete/${id}`);  // Make sure this endpoint is correct
             setRows((prevRows) => prevRows.filter((row) => row.id !== id));  // Update local state
 
             toast.success("User deleted successfully!", {

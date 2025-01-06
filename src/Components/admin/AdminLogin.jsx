@@ -41,6 +41,7 @@ const AdminLogin = () => {
                 navigate("/admin/dashboard");
 
                 
+                
                 // Set a timeout to log the user out when the token expires
                 setTimeout(logout, expirationTime - new Date().getTime());
             }

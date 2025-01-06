@@ -33,7 +33,7 @@ const FormManagement = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:4000/api/v1/apply/delete/${id}`);
+            await axios.delete(`${server}/apply/delete/${id}`);
             setRows((prevRows) => prevRows.filter((row) => row.id !== id));
             toast.success("User deleted successfully!");
         } catch (error) {
