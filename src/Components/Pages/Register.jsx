@@ -48,7 +48,7 @@ const Register = () => {
                 selectedStateCode: selectedState, // Pass state code (e.g., BR)
                 selectedCity,  // Pass selected city
                 location,      // Pass location input value
-                from: 'withinApp'
+                from: 'withinApp',
             }
         });
     };

@@ -30,8 +30,8 @@ const NotFound = lazy(() => import("./Components/NotFound"));
 const App = () => {
   return (
     <BrowserRouter>
-      <Routes>
 
+      <Routes>
         <Route element={<ChildrenOutlet />}>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<ProtectedURL><Login /></ProtectedURL>} />
@@ -47,40 +47,41 @@ const App = () => {
           <AdminRouteGuard>
             <AdminLogin />
           </AdminRouteGuard>
-        } />
+        }/>
 
         <Route path="/admin/dashboard" element={
           <ProtectedAdminRoute>
             <Dashboard />
           </ProtectedAdminRoute>
-        } />
+        }/>
 
         <Route path="/admin/form-data" element={
           <ProtectedAdminRoute>
             <FormManagement />
           </ProtectedAdminRoute>
-        } />
+        }/>
 
         <Route path="/admin/form-data/:id" element={
           <ProtectedAdminRoute>
             <FormManagementView />
           </ProtectedAdminRoute>
-        } />
+        }/>
 
         <Route path="/admin/users-management" element={
           <ProtectedAdminRoute>
             <UserManagement />
           </ProtectedAdminRoute>
-        } />
+        }/>
 
         <Route path="/admin/export-data" element={
           <ProtectedAdminRoute>
             <ExportData />
           </ProtectedAdminRoute>
-        } />
+        }/>
 
         <Route path="*" element={<NotFound />} />
       </Routes>
+
       <Toaster />
     </BrowserRouter>
   )
