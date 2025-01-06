@@ -1,17 +1,307 @@
 import { Accessibility, InsertDriveFile, Menu, Person, Photo } from "@mui/icons-material";
-
-
+import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { State, City } from "country-state-city";
+import FormSubmitedSucessfully from "./FormSubmitedSucessfully";
+import { server } from "../../main";
 
 const Form = () => {
+    const navigate = useNavigate();
+    const currentYear = new Date().getFullYear(); // Get the current year
+    const years = Array.from({ length: 50 }, (_, index) => currentYear - index); // Generate an array of the last 10 years
+
+
+    const locationData = useLocation();
+    const { selectedStateName, selectedStateCode, selectedCity, location } =
+        locationData.state || {};
+
+    const [applyAss, setApplyAss] = useState("Individual"); // State to track the selected option
+    const [sel, setSelectedStateName] = useState("");
+    const [selectedState, setSelectedState] = useState("");
+    const [selectedCites, setSelectedCity] = useState("");
+
+    const [applicantPhoto, setApplicantPhoto] = useState(null);
+    const [idProof, setIdProof] = useState(null);
+    const [addressProof, setAddressProof] = useState(null);
+
+    // Handle photo upload change
+    const handlePhotoChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const fileType = file.type.split('/')[1].toLowerCase();
+            const fileSize = file.size / 1024; // Size in KB
+            if (fileType === "jpeg" || fileType === "jpg") {
+                if (fileSize <= 500) {
+                    setApplicantPhoto(file);
+                } else {
+                    alert("File size should not exceed 500KB.");
+                }
+            } else {
+                alert("Only JPG/JPEG images are allowed.");
+            }
+        }
+    };
+
+    const handlePhotoFirstChange = (e) => {
+        const files = e.target.files[0];
+        if (files) {
+            const fileType = files.type.split('/')[1].toLowerCase();
+            const fileSize = files.size / 1024; // Size in KB
+            if (fileType === "jpeg" || fileType === "jpg") {
+                if (fileSize <= 500) {
+                    setIdProof(files);
+                } else {
+                    alert("File size should not exceed 500KB.");
+                }
+            } else {
+                alert("Only JPG/JPEG images are allowed.");
+            }
+        }
+    };
+
+
+    const handlePhotoSecondChange = (e) => {
+        const filess = e.target.files[0];
+        if (filess) {
+            const fileType = filess.type.split('/')[1].toLowerCase();
+            const fileSize = filess.size / 1024; // Size in KB
+            if (fileType === "jpeg" || fileType === "jpg") {
+                if (fileSize <= 500) {
+                    setAddressProof(filess)
+                } else {
+                    alert("File size should not exceed 500KB.");
+                }
+            } else {
+                alert("Only JPG/JPEG images are allowed.");
+            }
+        }
+    };
+
+
+
+
+    // Handle state change
+    const handleStateChange = (e) => {
+        const stateCode = e.target.value;
+        const selectedStateData = State.getStatesOfCountry("IN").find(
+            (state) => state.isoCode === stateCode
+        );
+        setSelectedState(stateCode); // Save the state code
+        setSelectedStateName(selectedStateData.name); // Save the state name
+        setSelectedCity(""); // Reset city when the state changes
+        setStateAddress(selectedStateData.name); // Save the state name in stateAddress
+    };
+
+
+    // Handle city change
+    const handleCityChange = (e) => {
+        setSelectedCity(e.target.value);
+        setDistrict(e.target.value)
+    };
+
+
+
+    // form-data states
+    const [title, setTitle] = useState("");
+    const [locationDescription, setLocationDescription] = useState("");
+    const [typeOfRO, setTypeOfRO] = useState("Regular");
+    const [modeOfSelection, setModeOfSelection] = useState("Draw of Lots");
+    const [state, setState] = useState("");
+    const [publishedDate, setPublishedDate] = useState("27 December 2024");
+    const [closingDate, setClosingDate] = useState("30 January 2025");
+    const [applyAs, setApplyAs] = useState("Individual");
+    const [firmName, setFirmName] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [companyName, setCompanyName] = useState("");
+    const [gender, setGender] = useState("");
+    const [mobileNumber, setMobileNumber] = useState("");
+    const [landlineNumber, setLandlineNumber] = useState("");
+    const [resAddress, setResAddress] = useState("");
+    const [pincode, setPincode] = useState("");
+    const [stateAddress, setStateAddress] = useState("");
+    const [district, setDistrict] = useState("");
+    const [email, setEmail] = useState("");
+    const [panCard, setPanCard] = useState("");
+    const [indianCitizen, setIndianCitizen] = useState("");
+    const [indianITRule, setIndianITRule] = useState("");
+    const [dateOfBirth, setDateOfBirth] = useState("");
+    const [physicalDisability, setPhysicalDisability] = useState("");
+    const [FatherOrHusbandFirstName, setFatherOrHusbandFirstName] = useState("");
+    const [FatherOrHusbandMiddleName, setFatherOrHusbandMiddleName] = useState("");
+    const [FatherOrHusbandLastName, setFatherOrHusbandLastName] = useState("");
+    const [maritalStatus, setMaritalStatus] = useState("");
+    // 
+    const [qualification, setQualification] = useState("");
+    const [boardUniversityInstitute, setBoardUniversityInstitute] = useState("");
+    const [degree, setDegree] = useState("");
+    const [year, setYear] = useState("");
+    const [groupType, setGroupType] = useState("");
+    const [landOwnerName, setLandOwnerName] = useState("");
+    const [relationshipWithApplicant, setRelationshipWithApplicant] = useState("");
+    const [registrationDate, setRegistrationDate] = useState("");
+    const [dateOfRegistration, setDateOfRegistration] = useState("");
+    const [KhasraKhatouniGutNoSurvey, setKhasraKhatouniGutNoSurvey] = useState("");
+    const [landLocation, setLandLocation] = useState("");
+    const [landDimensionsFrontage, setLandDimensionsFrontage] = useState("");
+    const [landDimensionsDepth, setLandDimensionsDepth] = useState("");
+    const [landDimensionsArea, setLandDimensionsArea] = useState("");
+    const [landTransfer, setLandTransfer] = useState("");
+    const [rateTerm, setRateTerm] = useState("");
+    const [offerAnotherPlot, setOfferAnotherPlot] = useState("");
+    // 
+    const [declarationIsAgree, setDeclarationIsAgree] = useState(false);
+
+
+
+    const [open, setOpen] = useState(false);
+
+    // Submit form data
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        if (!declarationIsAgree) {
+            alert("Please agree to the terms before submitting.");
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append("title", `Advertisement Locations of Petrol Pump - KSK Dealership in ${selectedStateName} - ${selectedStateCode}`);
+        formData.append("locationDescription", `${selectedCity}, ${location}`);
+        formData.append("typeOfRO", typeOfRO);
+        formData.append("modeOfSelection", modeOfSelection);
+        formData.append("state", selectedStateName);
+        formData.append("publishedDate", publishedDate);
+        formData.append("closingDate", closingDate);
+        formData.append("applyAs", applyAs);
+        formData.append("firmName", firmName);
+        formData.append("firstName", firstName);
+        formData.append("lastName", lastName);
+        formData.append("companyName", companyName);
+        formData.append("gender", gender);
+        formData.append("mobileNumber", mobileNumber);
+        formData.append("landlineNumber", landlineNumber);
+        formData.append("resAddress", resAddress);
+        formData.append("pincode", pincode);
+        formData.append("stateAddress", stateAddress);
+        formData.append("district", district);
+        formData.append("email", email);
+        formData.append("panCard", panCard);
+        formData.append("indianCitizen", indianCitizen);
+        formData.append("indianITRule", indianITRule);
+        formData.append("dateOfBirth", dateOfBirth);
+        formData.append("physicalDisability", physicalDisability);
+        formData.append("FatherOrHusbandFirstName", FatherOrHusbandFirstName);
+        formData.append("FatherOrHusbandMiddleName", FatherOrHusbandMiddleName);
+        formData.append("FatherOrHusbandLastName", FatherOrHusbandLastName);
+        formData.append("maritalStatus", maritalStatus);
+
+        // 
+        formData.append("qualification", qualification);
+        formData.append("boardUniversityInstitute", boardUniversityInstitute);
+        formData.append("degree", degree);
+        formData.append("groupType", groupType);
+        formData.append("landOwnerName", landOwnerName);
+        formData.append("relationshipWithApplicant", relationshipWithApplicant);
+        formData.append("registrationDate", registrationDate);
+        formData.append("dateOfRegistration", dateOfRegistration);
+        formData.append("KhasraKhatouniGutNoSurvey", KhasraKhatouniGutNoSurvey);
+        formData.append("landLocation", landLocation);
+        formData.append("landDimensionsFrontage", landDimensionsFrontage);
+        formData.append("landDimensionsDepth", landDimensionsDepth);
+        formData.append("landDimensionsArea", landDimensionsArea);
+        formData.append("landTransfer", landTransfer);
+        formData.append("rateTerm", rateTerm);
+        formData.append("offerAnotherPlot", offerAnotherPlot);
+
+        // Add files to the form data
+        formData.append("applicantPhoto", applicantPhoto);
+        formData.append("idProof", idProof);
+        formData.append("addressProof", addressProof);
+
+        formData.append("declarationIsAgree", declarationIsAgree);
+
+        try {
+            const response = await fetch(`${server}/apply/submit`, {
+                method: "POST",
+                // headers: {
+                //     "Content-Type": "application/json",
+                // },
+                // body: JSON.stringify(formData),
+                body: formData,
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                // Reset form data
+                setTitle("");
+                setLocationDescription("");
+                setTypeOfRO("Regular");
+                setModeOfSelection("Draw of Lots");
+                setState("");
+                setPublishedDate("27 December 2024");
+                setClosingDate("30 January 2025");
+                setApplyAs("Individual");
+                setFirmName("");
+                setFirstName("");
+                setLastName("");
+                setCompanyName("");
+                setGender("");
+                setMobileNumber("");
+                setLandlineNumber("");
+                setResAddress('');
+                setPincode('');
+                setStateAddress('');
+                setDistrict('');
+                setEmail('');
+                setPanCard('');
+                setIndianCitizen('');
+                setDateOfBirth('');
+                setPhysicalDisability('');
+                setMaritalStatus('');
+                // 
+                setQualification('');
+                setBoardUniversityInstitute('');
+                setDegree('');
+                setGroupType('');
+                setLandOwnerName('');
+                setRelationshipWithApplicant('');
+                setRegistrationDate('');
+                setDateOfRegistration('');
+                setKhasraKhatouniGutNoSurvey('');
+                setLandLocation('');
+                setLandDimensionsFrontage('');
+                setLandDimensionsDepth('');
+                setLandDimensionsArea('');
+                setLandTransfer('');
+                setRateTerm('')
+                setOfferAnotherPlot('');
+                setDeclarationIsAgree('false');
+
+
+                navigate("/form-Submited-Sucessfully", { state: { from: 'withinApp' }, replace: true });
+            }
+        } catch (error) {
+            console.error("Error: ", error);
+        }
+        console.log("FormData to submit:", formData);
+    };
+
+    const handleApplyAsChange = (event) => {
+        setApplyAss(event.target.value);
+        setApplyAs(event.target.value);
+    };
+
+
     return (
         <section className="form-fill">
             <div>
                 <div>
                     <h3>Apply For Dealership</h3>
 
-                    <form>
-
-                        {/* Application Form */}
+                    <form onSubmit={handleSubmit}>
+                        {/* Application Section */}
                         <div>
                             <div className="heading">
                                 <Menu />
@@ -27,9 +317,14 @@ const Form = () => {
                                     </div>
                                     <div>
                                         <p>
-                                            Advertisement Locations of Petrol Pump - KSK Dealership in Delhi - (DL)
+                                            Advertisement Locations of Petrol Pump - Prime Petrol
+                                            Distributors in {selectedStateName} - {selectedStateCode}
                                         </p>
-                                        <input type="hidden" name="title" value="Advertisement Locations of Petrol Pump - KSK Dealership in Delhi" />
+                                        <input
+                                            type="hidden"
+                                            name="title"
+                                            value={`Advertisement Locations of Petrol Pump - KSK Dealership in ${selectedStateName} - ${selectedStateCode}`}
+                                        />
                                     </div>
 
                                     <div>
@@ -39,13 +334,13 @@ const Form = () => {
                                     </div>
                                     <div>
                                         <p>
-                                            On Khajuri Chowk to Loni Road Via Karawal Nagar
+                                            {selectedCity}, {location}
                                         </p>
-                                        <input type="hidden" name="aState" value="Delhi" />
-                                        <input type="hidden" name="nameofLocation" value="On Khajuri Chowk to Loni Road ViaKarawal Nagar" />
+                                        <input type="hidden" name="aState" value={selectedCity} />
+                                        <input type="hidden" name="nameofLocation" value={location} />
                                     </div>
-
                                 </div>
+
                                 <div className="row">
                                     <div>
                                         <p>
@@ -53,9 +348,7 @@ const Form = () => {
                                         </p>
                                     </div>
                                     <div>
-                                        <p>
-                                            Regular
-                                        </p>
+                                        <p>Regular</p>
                                     </div>
 
                                     <div>
@@ -64,12 +357,10 @@ const Form = () => {
                                         </p>
                                     </div>
                                     <div>
-                                        <p>
-                                            Draw of Lots
-                                        </p>
+                                        <p>Draw of Lots</p>
                                     </div>
-
                                 </div>
+
                                 <div className="row">
                                     <div>
                                         <p>
@@ -77,9 +368,7 @@ const Form = () => {
                                         </p>
                                     </div>
                                     <div>
-                                        <p>
-                                            open
-                                        </p>
+                                        <p>Open</p>
                                     </div>
 
                                     <div>
@@ -88,12 +377,10 @@ const Form = () => {
                                         </p>
                                     </div>
                                     <div>
-                                        <p>
-                                            Assam
-                                        </p>
+                                        <p>{selectedStateName}</p>
                                     </div>
-
                                 </div>
+
                                 <div className="row">
                                     <div>
                                         <p>
@@ -101,9 +388,7 @@ const Form = () => {
                                         </p>
                                     </div>
                                     <div>
-                                        <p>
-                                            10 December 2024
-                                        </p>
+                                        <p>27 December 2024</p>
                                     </div>
 
                                     <div>
@@ -112,12 +397,10 @@ const Form = () => {
                                         </p>
                                     </div>
                                     <div>
-                                        <p>
-                                            23 December 2024
-                                        </p>
+                                        <p>30 January 2025</p>
                                     </div>
-
                                 </div>
+
                                 <div className="row">
                                     <div>
                                         <p>
@@ -125,8 +408,22 @@ const Form = () => {
                                         </p>
                                     </div>
                                     <div>
-                                        <input type="radio" name="title" value="Individual" checked />{"Individual"}
-                                        <input type="radio" name="title" value="Partnership" />{"Partnership"}
+                                        <input
+                                            type="radio"
+                                            name="applyAs"
+                                            value="Individual"
+                                            checked={applyAss === "Individual"}
+                                            onChange={handleApplyAsChange}
+                                        />{" "}
+                                        Individual
+                                        <input
+                                            type="radio"
+                                            name="applyAs"
+                                            value="Partnership"
+                                            checked={applyAss === "Partnership"}
+                                            onChange={handleApplyAsChange}
+                                        />{" "}
+                                        Partnership
                                     </div>
 
                                     <div>
@@ -135,19 +432,13 @@ const Form = () => {
                                         </p>
                                     </div>
                                     <div>
-                                        <p>
-                                            15 X 15 Sq.M. (Mininum Size)
-                                        </p>
+                                        <p>15 X 15 Sq.M. (Minimum Size)</p>
                                     </div>
-
                                 </div>
-
-
-
                             </div>
                         </div>
 
-                        {/* personal information */}
+                        {/* Personal Information Section */}
                         <div>
                             <div className="heading">
                                 <Person />
@@ -155,112 +446,191 @@ const Form = () => {
                             </div>
 
                             <div className="box">
-                                <div className="row" style={{ width: "100%" }}>
-                                    <div>
-                                        <p>
-                                            <b>Firm name <span>*</span></b>
-                                        </p>
+                                {applyAss === "Partnership" && (
+                                    <div className="row" style={{ width: "100%" }}>
+                                        <div>
+                                            <p>
+                                                <b>
+                                                    Firm name <span>*</span>
+                                                </b>
+                                            </p>
+                                        </div>
+                                        <div style={{ width: "75%" }}>
+                                            <input
+                                                type="text"
+                                                className="input-text"
+                                                name="firmname"
+                                                placeholder="Firm Name"
+                                                style={{ width: "100%" }}
+                                                value={firmName}
+                                                onChange={(e) => setFirmName(e.target.value)}
+                                            />
+                                        </div>
                                     </div>
-                                    <div style={{ width: "75%" }}>
-                                        <input type="text" className="input-text" name="firmname" placeholder="Firm Name" style={{ width: "100%" }} />
-                                    </div>
-                                </div>
+                                )}
 
                                 <div className="row">
                                     <div>
                                         <p>
-                                            <b>Type of RO <span>*</span></b>
+                                            <b>
+                                                Type of RO <span>*</span>
+                                            </b>
                                         </p>
                                     </div>
                                     <div>
-                                        <input type="text" className="input-text" name="typeofro" value="Regular" />
+                                        <input
+                                            type="text"
+                                            className="input-text"
+                                            name="firstName"
+                                            placeholder="First Name"
+                                            value={typeOfRO}
+                                            disabled
+                                        />
                                     </div>
 
                                     <div>
                                         <p>
-                                            <b>Name of Company <span>*</span></b>
+                                            <b>
+                                                Name of Company <span>*</span>
+                                            </b>
                                         </p>
                                     </div>
                                     <div>
-                                        <select name="nameofCompany" className="input-text" required="">
+                                        <select
+                                            name="nameofCompany"
+                                            className="input-text"
+                                            value={companyName}
+                                            onChange={(e) => setCompanyName(e.target.value)}
+                                        >
                                             <option value="">Select Company</option>
                                             <option value="Any of above">Any of above</option>
-                                            <option value="Bharat Petroleum (BPCL)">Bharat Petroleum (BPCL)</option>
-                                            <option value="Hindustan Petroleum (HPCL)">Hindustan Petroleum (HPCL)</option>
-                                            <option value="Indian Oil (IOCL)">Indian Oil (IOCL)</option>
+                                            <option value="Bharat Petroleum (BPCL)">
+                                                Bharat Petroleum (BPCL)
+                                            </option>
+                                            <option value="Hindustan Petroleum (HPCL)">
+                                                Hindustan Petroleum (HPCL)
+                                            </option>
+                                            <option value="Indian Oil (IOCL)">
+                                                Indian Oil (IOCL)
+                                            </option>
                                         </select>
                                     </div>
-
                                 </div>
 
                                 <div className="row">
                                     <div>
                                         <p>
-                                            <b>First Name <span>*</span></b>
+                                            <b>
+                                                First Name <span>*</span>
+                                            </b>
                                         </p>
                                     </div>
                                     <div>
-                                        <input type="text" className="input-text" name="First Name" placeholder="First Name" />
+                                        <input
+                                            type="text"
+                                            className="input-text"
+                                            name="firstName"
+                                            placeholder="First Name"
+                                            value={firstName}
+                                            onChange={(e) => setFirstName(e.target.value)}
+                                        />
                                     </div>
 
                                     <div>
                                         <p>
-                                            <b>Last Name <span>*</span></b>
+                                            <b>
+                                                Last Name <span>*</span>
+                                            </b>
                                         </p>
                                     </div>
                                     <div>
-                                        <input type="text" className="input-text" name="last-name" placeholder="Last Name" />
+                                        <input
+                                            type="text"
+                                            className="input-text"
+                                            name="lastName"
+                                            placeholder="Last Name"
+                                            value={lastName}
+                                            onChange={(e) => setLastName(e.target.value)}
+                                        />
                                     </div>
-
                                 </div>
 
                                 <div className="row">
                                     <div>
                                         <p>
-                                            <b>Category Name <span>*</span></b>
+                                            <b>
+                                                Category Name <span>*</span>
+                                            </b>
                                         </p>
                                     </div>
                                     <div>
-                                        <input type="text" name="Open" className="input-text" value="Open" style={{ outline: "none" }} />
-                                        {/* <p>
-                                            open
-                                        </p> */}
+                                        <input
+                                            className="input-text"
+                                            type="text"
+                                            name="category"
+                                            value={`Open`}
+                                        />
                                     </div>
 
                                     <div>
                                         <p>
-                                            <b>Gender <span>*</span></b>
+                                            <b>
+                                                Gender <span>*</span>
+                                            </b>
                                         </p>
                                     </div>
                                     <div>
-                                        <select name="gender" className="input-text" required="">
-                                            <option value="">Select Gender</option>
-                                            <option value="Male">Male</option>
-                                            <option value="Female">Female</option>
-                                        </select>
+                                        <input
+                                            type="radio"
+                                            name="gender"
+                                            value="Male"
+                                            onChange={(e) => setGender(e.target.value)}
+                                        />{" "}
+                                        Male
+                                        <input
+                                            type="radio"
+                                            name="gender"
+                                            value="Female"
+                                            onChange={(e) => setGender(e.target.value)}
+                                        />{" "}
+                                        Female
                                     </div>
-
                                 </div>
 
                                 <div className="row">
                                     <div>
                                         <p>
-                                            <b>Mobile Number <span>*</span></b>
+                                            <b>
+                                                Mobile Number <span>*</span>
+                                            </b>
                                         </p>
                                     </div>
                                     <div>
-                                        <input type="number" className="input-text" name="mobileNumber" placeholder="91234*****" />
+                                        <input
+                                            type="text"
+                                            className="input-text"
+                                            name="mobileNumber"
+                                            placeholder="Mobile Number"
+                                            value={mobileNumber}
+                                            onChange={(e) => setMobileNumber(e.target.value)}
+                                        />
                                     </div>
 
                                     <div>
                                         <p>
-                                            <b>Landline Number<span>*</span></b>
+                                            <b>Landline Number</b>
                                         </p>
                                     </div>
                                     <div>
-                                        <input type="number" className="input-text" name="landlineNumber" />
+                                        <input
+                                            type="text"
+                                            className="input-text"
+                                            name="landlineNumber"
+                                            placeholder="Landline Number"
+                                            value={landlineNumber}
+                                            onChange={(e) => setLandlineNumber(e.target.value)}
+                                        />
                                     </div>
-
                                 </div>
 
                                 <div className="row">
@@ -270,7 +640,14 @@ const Form = () => {
                                         </p>
                                     </div>
                                     <div>
-                                        <input type="text" className="input-text" name="resAddress" placeholder="Address" />
+                                        <input
+                                            type="text"
+                                            className="input-text"
+                                            name="resAddress"
+                                            placeholder="Address"
+                                            value={resAddress}
+                                            onChange={(e) => setResAddress(e.target.value)}
+                                        />
                                     </div>
 
                                     <div>
@@ -279,9 +656,15 @@ const Form = () => {
                                         </p>
                                     </div>
                                     <div>
-                                        <input type="number" className="input-text" name="pincode" placeholder="123456" />
+                                        <input
+                                            type="number"
+                                            className="input-text"
+                                            name="pincode"
+                                            placeholder="123456"
+                                            value={pincode}
+                                            onChange={(e) => setPincode(e.target.value)}
+                                        />
                                     </div>
-
                                 </div>
 
                                 <div className="row">
@@ -291,33 +674,38 @@ const Form = () => {
                                         </p>
                                     </div>
                                     <div>
-                                        <select name="state" className="input-text">
-                                            <option value>Select</option>
-                                            <option value={"1"}>New Delhi</option>
-                                            <option value={"2"}>West Bengal</option>
-                                            <option value={"3"}>Assam</option>
-                                            <option value={"4"}>Chandigarh</option>
-                                            <option value={"5"}>Haryana</option>
-                                            <option value={"6"}>Goa</option>
-                                            <option value={"7"}>Jharkhand</option>
-                                            <option value={"8"}>Jammu & Kasmir</option>
-                                            <option value={"9"}>Ladakh</option>
-                                            <option value={"10"}>Punjab</option>
+                                        <select name="state" className="input-text" value={selectedState} onChange={handleStateChange} >
+                                            <option value="">Select</option>
+                                            {State.getStatesOfCountry("IN").map((state) => (
+                                                <option key={state.isoCode} value={state.isoCode}>
+                                                    {state.name}
+                                                </option>
+                                            ))}
                                         </select>
                                     </div>
 
+                                    {/* City Selection */}
+
                                     <div>
                                         <p>
-                                            <b>District <span>*</span></b>
+                                            <b>City <span>*</span></b>
                                         </p>
                                     </div>
+
                                     <div>
-                                        <input type="text" className="input-text" name="district" placeholder="District" />
+                                        <select name="city" className="input-text" value={selectedCites} onChange={handleCityChange} disabled={!selectedState}>
+                                            <option value="">Select</option>
+                                            {selectedState &&
+                                                City.getCitiesOfState("IN", selectedState).map((city) => (
+                                                    <option key={city.name} value={city.name}>
+                                                        {city.name}
+                                                    </option>
+                                                ))
+                                            }
+                                        </select>
                                     </div>
 
                                 </div>
-
-
 
                                 <div className="row">
                                     <div>
@@ -326,58 +714,196 @@ const Form = () => {
                                         </p>
                                     </div>
                                     <div>
-                                        <input type="email" className="input-text" name="email" placeholder="abc@gmail.com" />
+                                        <input
+                                            type="email"
+                                            className="input-text"
+                                            name="email"
+                                            placeholder="abc@gmail.com"
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                        />
                                     </div>
-
                                     <div>
                                         <p>
                                             <b>PAN Number <span>*</span></b>
                                         </p>
                                     </div>
                                     <div>
-                                        <input type="text" className="input-text" name="pancard" placeholder="ABCDE1234J" />
+                                        <input type="text" className="input-text" value={panCard} placeholder="BPYPXXXXX" onChange={(e) => setPanCard(e.target.value)} />
                                     </div>
-
                                 </div>
 
                                 <div className="row">
                                     <div>
                                         <p>
-                                            <b>Date of Birth <span>*</span></b>
+                                            <b>Whether Applicant is Indian Citizen<span>*</span></b>
                                         </p>
                                     </div>
+
                                     <div>
-                                        <input type="date" className="input-text" name="title" checked />
+                                        <input
+                                            type="radio"
+                                            name="indianCitizen"
+                                            value="Yes"
+                                            onChange={(e) => setIndianCitizen(e.target.value)}
+                                        />{" "}
+                                        Yes
+                                        <input
+                                            type="radio"
+                                            name="indianCitizen"
+                                            value="No"
+                                            onChange={(e) => setIndianCitizen(e.target.value)}
+                                        />{" "}
+                                        No
+
                                     </div>
 
                                     <div>
                                         <p>
-                                            <b>Physical Disability <span>*</span></b>
+                                            <b>Residential of Indian as IT Rule<span>*</span></b>
+                                        </p>
+                                    </div>
+
+                                    <div>
+                                        <input
+                                            type="radio"
+                                            name="IndianITRule"
+                                            value="Yes"
+                                            onChange={(e) => setIndianITRule(e.target.value)}
+                                        />{" "}
+                                        Yes
+                                        <input
+                                            type="radio"
+                                            name="IndianITRule"
+                                            value="No"
+                                            onChange={(e) => setIndianITRule(e.target.value)}
+                                        />{" "}
+                                        No
+
+                                    </div>
+                                </div>
+
+                                <div className="row">
+                                    <div>
+                                        <p>
+                                            <b>Date of Birth<span>*</span></b>
+                                        </p>
+                                    </div>
+
+                                    <div>
+                                        <input
+                                            type="Date"
+                                            className="input-text"
+                                            name="dateOfBirth"
+                                            value={dateOfBirth}
+                                            onChange={(e) => setDateOfBirth(e.target.value)}
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <p>
+                                            <b>Physical Disability<span>*</span></b>
                                         </p>
                                     </div>
                                     <div>
-                                        <input type="radio" name="PhysicalDisability" value="PhysicalDisability-yes" checked />{"Yes"}
-                                        <input type="radio" name="PhysicalDisability" value="PhysicalDisabilityno" />{"No"}
+                                        <input
+                                            type="radio"
+                                            name="physicalDisability"
+                                            value="Yes"
+                                            onChange={(e) => setPhysicalDisability(e.target.value)}
+                                        />{" "}
+                                        Yes
+                                        <input
+                                            type="radio"
+                                            name="physicalDisability"
+                                            value="No"
+                                            onChange={(e) => setPhysicalDisability(e.target.value)}
+                                        />{" "}
+                                        No
+
                                     </div>
                                 </div>
 
-
-                                <div className="row" style={{ width: "100%" }}>
-                                    <div style={{ width: "40%" }}>
+                                <div className="row">
+                                    <div>
                                         <p>
-                                            <b>Marital Status <span>*</span>(In case of married women {"Husband's"} Name)</b>
+                                            <b>Father/Husband Name<span>*</span></b>
                                         </p>
                                     </div>
-                                    <div style={{ width: "60%" }}>
-                                        <input type="radio" name="status" value="Singlee" checked />{"Single"}
-                                        <input type="radio" name="status" value="Marriede" />{"Married"}
-                                        <input type="radio" name="status" value="widowe" />{"Widow (er)"}
-                                        <input type="radio" name="status" value="divorcee" />{"Divorce"}
+
+                                    <div>
+                                        <input
+                                            type="text"
+                                            className="input-text"
+                                            name="FatherOrHusbandFirstName"
+                                            placeholder="First Name"
+                                            value={FatherOrHusbandFirstName}
+                                            onChange={(e) => setFatherOrHusbandFirstName(e.target.value)}
+                                        />
+                                    </div>
+                                    <div>
+                                        <input
+                                            type="text"
+                                            className="input-text"
+                                            name="FatherOrHusbandMiddleName"
+                                            placeholder="Middle Name"
+                                            value={FatherOrHusbandMiddleName}
+                                            onChange={(e) => setFatherOrHusbandMiddleName(e.target.value)}
+                                        />
+                                    </div>
+                                    <div>
+                                        <input
+                                            type="text"
+                                            className="input-text"
+                                            name="FatherOrHusbandLastName"
+                                            placeholder="Last Name"
+                                            value={FatherOrHusbandLastName}
+                                            onChange={(e) => setFatherOrHusbandLastName(e.target.value)}
+                                        />
                                     </div>
                                 </div>
+
+                                <div className="row">
+                                    <div>
+                                        <p>
+                                            <b>Marital Status <span>*</span></b>
+                                        </p>
+                                    </div>
+
+                                    <div style={{ width: "50%", gap: "1rem" }}>
+                                        <input
+                                            type="radio"
+                                            name="materialStatus"
+                                            value="Single"
+                                            onChange={(e) => setMaritalStatus(e.target.value)}
+                                        />{" "}
+                                        Single
+                                        <input
+                                            type="radio"
+                                            name="materialStatus"
+                                            value="Married"
+                                            onChange={(e) => setMaritalStatus(e.target.value)}
+                                        />{" "}
+                                        Married
+                                        <input
+                                            type="radio"
+                                            name="materialStatus"
+                                            value="Widow"
+                                            onChange={(e) => setMaritalStatus(e.target.value)}
+                                        />{" "}
+                                        Widow
+                                        <input
+                                            type="radio"
+                                            name="materialStatus"
+                                            value="Divorce"
+                                            onChange={(e) => setMaritalStatus(e.target.value)}
+                                        />{" "}
+                                        Divorce
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
-
 
                         {/* Applicant's Education Qualification (Minimum 10th pass or Equivalent) */}
                         <div>
@@ -393,42 +919,60 @@ const Form = () => {
                                         <p>
                                             <b>Qualification <span>*</span></b>
                                         </p>
-                                        <input type="text" className="input-text" name="firmname" placeholder="Degree / Btech, B.Com" style={{ width: "100%" }} />
+                                        <input
+                                            type="text"
+                                            className="input-text"
+                                            name="qualification"
+                                            placeholder="Qualification"
+                                            style={{ width: "100%" }}
+                                            value={qualification}
+                                            onChange={(e) => setQualification(e.target.value)}
+                                        />
                                     </div>
 
                                     <div style={{ width: "35%" }}>
                                         <p>
                                             <b>Board/University/Institute <span>*</span></b>
                                         </p>
-                                        <input type="text" className="input-text" name="firmname" placeholder="CBSE/XYZ University" style={{ width: "100%" }} />
+                                        <input
+                                            type="text"
+                                            className="input-text"
+                                            name="boardUniversityInstitute"
+                                            placeholder="XYZ University"
+                                            style={{ width: "100%" }}
+                                            value={boardUniversityInstitute}
+                                            onChange={(e) => setBoardUniversityInstitute(e.target.value)}
+                                        />
                                     </div>
-
-
 
                                     <div style={{ width: "30%" }}>
                                         <p>
                                             <b>Degree <span>*</span></b>
                                         </p>
-                                        <input type="text" className="input-text" name="firmname" placeholder="Degree" style={{ width: "100%" }} />
+                                        <input
+                                            type="text"
+                                            className="input-text"
+                                            name="degree"
+                                            placeholder="Degree"
+                                            style={{ width: "100%" }}
+                                            value={degree}
+                                            onChange={(e) => setDegree(e.target.value)}
+                                        />
                                     </div>
                                 </div>
-
 
                                 <div className="row" style={{ width: "100%" }}>
                                     <div style={{ width: "30%" }}>
                                         <p>
                                             <b>year <span>*</span></b>
                                         </p>
-                                        <select name="year" className="input-text">
+                                        <select name="year" className="input-text" value={year} onChange={(e) => setYear(e.target.value)}>
                                             <option value="">Select Year</option>
-                                            <option value="2024">2024</option>
-                                            <option value="2023">2023</option>
-                                            <option value="2022">2022</option>
-                                            <option value="2021">2021</option>
-                                            <option value="2020">2020</option>
-                                            <option value="2019">2019</option>
-                                            <option value="2018">2018</option>
-                                            <option value="2017">2017</option>
+                                            {years.map((year) => (
+                                                <option key={year} value={year}>
+                                                    {year}
+                                                </option>
+                                            ))}
                                         </select>
                                     </div>
 
@@ -436,37 +980,37 @@ const Form = () => {
                                         <p>
                                             <b>Group Type <span>*</span></b>
                                         </p>
-                                        <select name="group-type" className="input-text">
+                                        <select name="groupType" className="input-text" value={groupType} onChange={(e) => setGroupType(e.target.value)}>
                                             <option value="">Select Year</option>
-                                            <option value="2024">2024</option>
-                                            <option value="2023">2023</option>
-                                            <option value="2022">2022</option>
-                                            <option value="2021">2021</option>
-                                            <option value="2020">2020</option>
-                                            <option value="2019">2019</option>
-                                            <option value="2018">2018</option>
-                                            <option value="2017">2017</option>
+                                            <option value="Group1">Group 1</option>
+                                            <option value="Group2">Group 2</option>
+                                            <option value="Group3">Group 3</option>
                                         </select>
                                     </div>
 
 
                                 </div>
 
-
                                 <div className="row" style={{ width: "100%" }}>
 
                                     <div style={{ width: "50%" }}>
                                         <p>
-                                            <b>Name(s) of the owner of Land/Leaseholder <span>*</span></b>
+                                            <b>Name(s) of the owner of Land/Leaseholder<span>*</span></b>
                                         </p>
-                                        <input type="text" className="input-text" style={{ width: "100%" }} />
+                                        <input
+                                            type="text"
+                                            className="input-text"
+                                            style={{ width: "100%" }}
+                                            value={landOwnerName}
+                                            onChange={(e) => setLandOwnerName(e.target.value)}
+                                        />
                                     </div>
 
                                     <div style={{ width: "50%" }}>
                                         <p>
                                             <b>Relationship with Application <span>*</span></b>
                                         </p>
-                                        <select name="relationshipwithapplication" className="input-text" required="">
+                                        <select name="relationshipwithapplication" className="input-text" value={relationshipWithApplicant} onChange={(e) => setRelationshipWithApplicant(e.target.value)}>
                                             <option value="">Relationship with Application</option>
                                             <option value="Self">Self</option>
                                             <option value="Spouse">Spouse</option>
@@ -489,8 +1033,7 @@ const Form = () => {
                                         <p>
                                             <b>Date of registration sale deed / Gift deed / lease deed / date of mutation <span>*</span></b>
                                         </p>
-                                        <input type="date" className="input-text"/>
-
+                                        <input type="date" name="dateOfRegistration" className="input-text" value={dateOfRegistration} onChange={(e) => setDateOfRegistration(e.target.value)} />
                                     </div>
 
 
@@ -498,21 +1041,18 @@ const Form = () => {
                                         <p>
                                             <b>Khasra No / Khatouni / Gut No / Survey No. <span>*</span></b>
                                         </p>
-                                        <input type="text" className="input-text"  style={{ width: "100%" }} />
+                                        <input type="text" name="khatouni" value={KhasraKhatouniGutNoSurvey} className="input-text" style={{ width: "100%" }} onChange={(e) => setKhasraKhatouniGutNoSurvey(e.target.value)} />
                                     </div>
                                 </div>
-
-
 
                                 <div className="row" style={{ width: "100%" }}>
                                     <div style={{ width: "100%" }}>
                                         <p>
                                             <b>Location of the Land <span>*</span></b>
                                         </p>
-                                        <input type="text" className="input-text" name="firmname" placeholder="Fill the complete address of the land" style={{ width: "100%" }} />
+                                        <input type="text" className="input-text" name="land" value={landLocation} onChange={(e) => setLandLocation(e.target.value)} placeholder="Fill the complete address of the land" style={{ width: "100%" }} />
                                     </div>
                                 </div>
-
 
                                 <div className="row" style={{ width: "100%" }}>
 
@@ -524,14 +1064,30 @@ const Form = () => {
                                         <p>
                                             <b>Frontage in Meter <span>*</span></b>
                                         </p>
-                                        <input type="text" className="input-text"  placeholder="20" style={{ width: "100%" }} />
+                                        <input
+                                            type="number"
+                                            className="input-text"
+                                            style={{ width: "100%" }}
+                                            name="landDimensionsFrontage"
+                                            value={landDimensionsFrontage}
+                                            onChange={(e) => setLandDimensionsFrontage(e.target.value)}
+                                            placeholder="Enter frontage"
+                                        />
                                     </div>
 
                                     <div style={{ width: "28%" }}>
                                         <p>
                                             <b>Depth in Meter <span>*</span></b>
                                         </p>
-                                        <input type="text" className="input-text"  placeholder="20" style={{ width: "100%" }} />
+                                        <input
+                                            type="number"
+                                            className="input-text"
+                                            placeholder="Enter Depth"
+                                            name="landDimensionsDepth"
+                                            style={{ width: "100%" }}
+                                            value={landDimensionsDepth}
+                                            onChange={(e) => setLandDimensionsDepth(e.target.value)}
+                                        />
                                     </div>
 
 
@@ -539,10 +1095,17 @@ const Form = () => {
                                         <p>
                                             <b>Area (Sq.M) <span>*</span></b>
                                         </p>
-                                        <input type="text" className="input-text" placeholder="400" style={{ width: "100%" }} />
+                                        <input
+                                            type="number"
+                                            className="input-text"
+                                            name="landDimensionsArea"
+                                            placeholder="Enter Area"
+                                            style={{ width: "100%" }}
+                                            value={landDimensionsArea}
+                                            onChange={(e) => setLandDimensionsArea(e.target.value)}
+                                        />
                                     </div>
                                 </div>
-
 
                                 <div className="row" style={{ width: "100%" }}>
                                     <div style={{ width: "75%" }}>
@@ -551,14 +1114,13 @@ const Form = () => {
                                         </p>
                                     </div>
                                     <div>
-                                        <select name="year" className="input-text">
+                                        <select name="year" className="input-text" value={landTransfer} onChange={(e) => setLandTransfer(e.target.value)}>
                                             <option value="">Select</option>
                                             <option value="yes">yes</option>
                                             <option value="no">no</option>
                                         </select>
                                     </div>
                                 </div>
-
 
                                 <div className="row" style={{ width: "100%" }}>
                                     <div style={{ width: "35%" }}>
@@ -567,7 +1129,7 @@ const Form = () => {
                                         </p>
                                     </div>
                                     <div style={{ width: "55%" }}>
-                                        <textarea className="input-text" style={{ maxWidth: "430px" }} placeholder="If you want to give the petrol pump to company to operate it, write rate terms on annual basis, if not, write “No”"/>
+                                        <textarea type="text" className="input-text" name="rateTerm" value={rateTerm} onChange={(e) => setRateTerm(e.target.value)} style={{ maxWidth: "430px", height: "17vh" }} placeholder="If you want to give the petrol pump to company to operate it, write rate terms on annual basis, if not, write “No”" />
                                     </div>
                                 </div>
 
@@ -578,18 +1140,9 @@ const Form = () => {
                                         </p>
                                     </div>
                                     <div style={{ width: "14%" }}>
-                                        <input type="radio" name="plot" checked />{"yes"}
-                                        <input type="radio" name="plot"/>{"no"}
+                                        <input type="radio" name="offerAnotherPlot" value="Yes" onChange={(e) => setOfferAnotherPlot(e.target.value)} />{"yes"}
+                                        <input type="radio" name="offerAnotherPlot" value="No" onChange={(e) => setOfferAnotherPlot(e.target.value)} />{"no"}
                                     </div>
-
-                                    {/* <div style={{ width: "16%" }}>
-                                        <p>
-                                            <b>Create Password <span>*</span></b>
-                                        </p>
-                                    </div>
-                                    <div style={{ width: "25%" }}>
-                                        <input type="input" className="input-text" placeholder=""/>
-                                    </div> */}
                                 </div>
 
                             </div>
@@ -612,7 +1165,12 @@ const Form = () => {
                                                 letter of intent of the dealership (if already appointed) and that we would have no claim, whatsoever, against the Corporation for such withdrawal/termination.</span>
                                         </p>
                                         <center>
-                                            <input type="checkbox" />
+                                            <input
+                                                type="checkbox"
+                                                checked={declarationIsAgree}
+                                                onChange={() => setDeclarationIsAgree(!declarationIsAgree)}
+                                            />
+                                            {/* declarationIsAgree */}
                                             checkbox
                                         </center>
                                     </div>
@@ -636,11 +1194,17 @@ const Form = () => {
                                         <p>
                                             <b>Applicant Photo <span>*</span></b>
                                         </p>
-                                        <input className="input-text" type="file" style={{ height: "auto" }} name="applicantphoto" required="" />
+                                        <input
+                                            className="input-text"
+                                            type="file"
+                                            style={{ height: "auto" }}
+                                            name="applicantphoto"
+                                            onChange={handlePhotoChange}
+                                        />
                                     </div>
                                 </div>
                                 <div>
-                                    <span style={{ fontSize: "11px", paddingLeft: "1rem" }}>Formate jpg only, Max Size 50kb, Dimension 5.5cm X 5.5cm</span>
+                                    <span style={{ fontSize: "11px", paddingLeft: "1rem" }}>Formate jpg only, Max Size 100kb, Dimension 5.5cm X 5.5cm</span>
                                 </div>
                             </div>
 
@@ -662,8 +1226,14 @@ const Form = () => {
                                             <b>Applicant Photo <span>*</span></b>
                                         </p>
 
-                                        <input type="file" className="input-text" style={{ height: "auto" }} name="applicantphoto" required="" />
-                                        <span style={{ fontSize: "11px", paddingTop: "0.5rem" }}>Formate jpg only, Max Size 100kb, Dimension 5.5cm X 5.5cm</span>
+                                        <input
+                                            type="file"
+                                            className="input-text"
+                                            style={{ height: "auto" }}
+                                            name="idProof"
+                                            onChange={handlePhotoFirstChange}
+                                        />
+                                        <span style={{ fontSize: "11px", paddingTop: "0.5rem" }}>Formate jpg only, Max Size 500kb, Dimension 5.5cm X 5.5cm</span>
                                     </div>
 
 
@@ -671,24 +1241,36 @@ const Form = () => {
                                         <p>
                                             <b>Applicant Photo <span>*</span></b>
                                         </p>
-                                        <input type="file" className="input-text" style={{ height: "auto" }} name="applicantphoto" required="" />
-                                        <span style={{ fontSize: "11px", paddingTop: "0.5rem" }}>Formate jpg only, Max Size 100kb, Dimension 5.5cm X 5.5cm</span>
+                                        <input
+                                            type="file"
+                                            className="input-text"
+                                            style={{ height: "auto" }}
+                                            name="addressProof"
+                                            onChange={handlePhotoSecondChange}
+                                        />
+                                        <span style={{ fontSize: "11px", paddingTop: "0.5rem" }}>Formate jpg only, Max Size 500kb, Dimension 5.5cm X 5.5cm</span>
                                     </div>
                                 </div>
                                 <div style={{ width: "100%" }}>
                                     <button type="submit">Submit</button>
                                 </div>
+
                             </div>
 
 
                         </div>
 
 
+
+
                     </form>
+                    {open && <FormSubmitedSucessfully setOpen={setOpen} />}
                 </div>
             </div>
-        </section>
-    )
-}
 
-export default Form
+
+        </section>
+    );
+};
+
+export default Form;

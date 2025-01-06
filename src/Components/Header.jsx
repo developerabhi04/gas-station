@@ -24,13 +24,13 @@ const Header = () => {
                             <ul>
                                 <li>
 
-                                    <Link to={"/need-a-help"}>
+                                    <Link to={"/need-a-help"} state={{from: 'withinApp' }}>
                                         <Help />
-                                        Need a Help?
+                                        Need Help?
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to={"/apply-dealership"}>
+                                    <Link to={"/apply-dealership"} state={{ from: 'withinApp' }}>
                                         <Settings />
                                         Apply Dealership
                                     </Link>

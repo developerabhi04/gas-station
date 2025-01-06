@@ -15,7 +15,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <a>Privary Policy</a>
+            <a>Privacy Policy</a>
           </div>
 
           <div>

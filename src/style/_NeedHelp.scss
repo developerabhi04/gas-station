@@ -298,3 +298,44 @@
         }
     }
 }
+
+
+
+/* Error message styling */
+.error {
+    color: #d9534f;
+    /* Red color to indicate error */
+    font-size: 0.875rem;
+    /* Slightly smaller font for a subtle look */
+    margin-top: 0.25rem;
+    /* Small spacing above the error message */
+    margin-left: 0.5rem;
+    /* Optional: Adjust the margin for better alignment */
+    font-weight: 500;
+    /* Bold text for visibility */
+}
+
+.error::before {
+    content: "⚠ ";
+    /* Warning icon before the error message */
+    font-size: 1rem;
+    /* Slightly larger for emphasis */
+    margin-right: 0.25rem;
+}
+
+input.error-input,
+textarea.error-input {
+    border-color: #d9534f;
+    /* Red border for error input fields */
+    background-color: #fff5f5;
+    /* Subtle red background for error input fields */
+}
+
+input.error-input:focus,
+textarea.error-input:focus {
+    outline: none;
+    border-color: #c9302c;
+    /* Darker red border on focus */
+    box-shadow: 0 0 5px rgba(217, 83, 79, 0.5);
+    /* Shadow for better focus visibility */
+}

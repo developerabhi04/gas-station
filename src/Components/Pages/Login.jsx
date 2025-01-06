@@ -1,6 +1,5 @@
 import { Email, Lock, Refresh } from "@mui/icons-material";
 import captcha from "../../assets/default.png"
-import { Link } from "react-router-dom";
 
 
 const Login = () => {
@@ -40,13 +39,10 @@ const Login = () => {
                                 <div>
                                     <button type="submit">Submit</button>
                                 </div>
-
-
-
                             </div>
                         </form>
 
-                        <div className="forgot-password">
+                        {/* <div className="forgot-password">
                             <a>
                                 <b>Forgot Password?</b>
                             </a>
@@ -55,7 +51,8 @@ const Login = () => {
                         <div className="sign-up">
                             <p>{"Don't have an account?"}</p>
                             <Link to={"/register"}>Register Now</Link>
-                        </div>
+                        </div> */}
+
                     </div>
                 </div>
             </div>

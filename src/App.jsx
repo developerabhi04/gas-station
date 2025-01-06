@@ -1,26 +1,89 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./Components/Pages/Home";
-import Header from "./Components/Header";
-import Footer from "./Components/Footer";
-import Login from "./Components/Pages/Login";
-import Register from "./Components/Pages/Register";
-import Form from "./Components/Pages/Form";
-import NeedHelp from "./Components/Pages/NeedHelp";
+import { Toaster } from "react-hot-toast";
+
+import ChildrenOutlet from "./Components/ChildrenOutlet";
+import AdminRouteGuard from "./Auth/AdminRouteGuard";
+import ProtectedAdminRoute from "./Auth/ProtectedAdminRoute";
+import { lazy } from "react";
+import ProtectedURL from "./Auth/ProtectedURL";
+
+
+// Code-Spliting
+const Home = lazy(() => import("./Components/Pages/Home"));
+const Login = lazy(() => import("./Components/Pages/Login"));
+const Form = lazy(() => import("./Components/Pages/Form"));
+const NeedHelp = lazy(() => import("./Components/Pages/Needhelp"));
+const Register = lazy(() => import("./Components/Pages/Register"));
+const FormSubmitedSucessfully = lazy(() => import("./Components/Pages/FormSubmitedSucessfully"));
+
+// Admin
+const AdminLogin = lazy(() => import("./Components/Admin/AdminLogin"));
+const Dashboard = lazy(() => import("./Components/Admin/Dashboard"));
+const UserManagement = lazy(() => import("./Components/Admin/UsersManagment"));
+const ExportData = lazy(() => import("./Components/Admin/ExportData"));
+const FormManagement = lazy(() => import("./Components/Admin/FormManagement"));
+const FormManagementView = lazy(() => import("./Components/Admin/FormManagementView"));
+const NotFound = lazy(() => import("./Components/NotFound"));
+
 
 
 const App = () => {
   return (
     <BrowserRouter>
-      <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/apply-dealership" element={<Register />} />
-        <Route path="/need-a-help" element={<NeedHelp />} />
 
-        <Route path="/submit-form" element={<Form />} />
+        <Route element={<ChildrenOutlet />}>
+
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<ProtectedURL><Login /></ProtectedURL>} />
+          <Route path="/apply-dealership" element={<ProtectedURL><Register /></ProtectedURL>} />
+          <Route path="/need-a-help" element={<NeedHelp />} />
+
+          <Route path="/apply-dealership" element={<ProtectedURL><Register /></ProtectedURL>} />
+          <Route path="/submit-form" element={<ProtectedURL><Form /></ProtectedURL>} />
+          <Route path="/form-Submited-Sucessfully" element={<ProtectedURL><FormSubmitedSucessfully /></ProtectedURL>} />
+        </Route>
+
+        {/* Admin-dashboard */}
+        <Route path="/admin" element={
+          <AdminRouteGuard>
+            <AdminLogin />
+          </AdminRouteGuard>
+        } />
+
+        <Route path="/admin/dashboard" element={
+          <ProtectedAdminRoute>
+            <Dashboard />
+          </ProtectedAdminRoute>
+        } />
+
+        <Route path="/admin/form-data" element={
+          <ProtectedAdminRoute>
+            <FormManagement />
+          </ProtectedAdminRoute>
+        } />
+
+        <Route path="/admin/form-data/:id" element={
+          <ProtectedAdminRoute>
+            <FormManagementView />
+          </ProtectedAdminRoute>
+        } />
+
+        <Route path="/admin/users-management" element={
+          <ProtectedAdminRoute>
+            <UserManagement />
+          </ProtectedAdminRoute>
+        } />
+
+        <Route path="/admin/export-data" element={
+          <ProtectedAdminRoute>
+            <ExportData />
+          </ProtectedAdminRoute>
+        } />
+
+        <Route path="*" element={<NotFound />} />
       </Routes>
-      <Footer />
+      <Toaster />
     </BrowserRouter>
   )
 }
