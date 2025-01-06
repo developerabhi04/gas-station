@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
 import ChildrenOutlet from "./Components/ChildrenOutlet";
-import AdminRouteGuard from "./Auth/AdminRouteGuard";
+import AdminRouteGuard from "./Auth/AdminRouteGuard"
 import ProtectedAdminRoute from "./Auth/ProtectedAdminRoute";
 import { lazy } from "react";
 import ProtectedURL from "./Auth/ProtectedURL";
