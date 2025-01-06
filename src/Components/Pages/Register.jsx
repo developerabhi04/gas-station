@@ -42,12 +42,13 @@ const Register = () => {
         const selectedStateName = states.find((state) => state.isoCode === selectedState)?.name;
 
         // Pass the form data to the 'submit-form' page via navigation state
-        navigate('/submit-form', { state: { from: 'withinApp' } }, {
+        navigate('/submit-form', {
             state: {
                 selectedStateName, // Only pass state name, no code
                 selectedStateCode: selectedState, // Pass state code (e.g., BR)
                 selectedCity,  // Pass selected city
-                location       // Pass location input value
+                location,      // Pass location input value
+                from: 'withinApp'
             }
         });
     };
