@@ -24,7 +24,7 @@ const Header = () => {
                             <ul>
                                 <li>
 
-                                    <Link to={"/need-a-help"} state={{from: 'withinApp' }}>
+                                    <Link to={"/need-a-help"}>
                                         <Help />
                                         Need Help?
                                     </Link>
