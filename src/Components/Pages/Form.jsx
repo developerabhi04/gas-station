@@ -510,6 +510,7 @@ const Form = () => {
                                 </div>
                             </div>
 
+
                             {/* Personal Information Section */}
                             <div>
                                 <div className="heading">
@@ -1256,7 +1257,6 @@ const Form = () => {
                             </div>
 
 
-
                             {/* Applicant photo */}
                             <div>
                                 <div className="heading">
@@ -1334,9 +1334,6 @@ const Form = () => {
                                     </div>
                                 </div>
                             </div>
-
-
-
 
                         </form>
                         {open && <FormSubmitedSucessfully setOpen={setOpen} />}

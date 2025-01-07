@@ -5,7 +5,7 @@ const FormSubmitedSucessfully = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    
+
     // Function to navigate to home page
     const homeUrl = () => {
         navigate('/', { state: { from: 'withinApp' }, replace: true });
