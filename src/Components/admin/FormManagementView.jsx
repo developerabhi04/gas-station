@@ -16,7 +16,7 @@ import { useState, useEffect } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import {server} from "../../main";
+import { server } from "../../main";
 
 
 
@@ -434,9 +434,9 @@ const FormManagementView = () => {
                     <Grid container spacing={4} sx={{ mt: 4 }}>
                         <Grid item xs={12} md={4}>
                             <Box>
-                                <InputLabel>PAN Card Photo</InputLabel>
+                                <InputLabel>Applicant photo</InputLabel>
                                 <Avatar
-                                    src={formData.applicantPhoto ? `http://localhost:4000/${formData.applicantPhoto.replace(/\\/g, '/')}` : ''}
+                                    src={formData.applicantPhoto}
                                     alt="PAN Card"
                                     variant="rounded"
                                     sx={{
@@ -446,7 +446,7 @@ const FormManagementView = () => {
                                         border: "1px solid #ddd",
                                         cursor: "pointer",
                                     }}
-                                    onClick={() => handleImageClick(formData.applicantPhoto ? `http://localhost:4000/${formData.applicantPhoto.replace(/\\/g, '/')}` : '')}
+                                    onClick={() => handleImageClick(formData.applicantPhoto)}
                                 />
                             </Box>
                         </Grid>
@@ -455,7 +455,7 @@ const FormManagementView = () => {
                             <Box>
                                 <InputLabel>Custom ID Photo</InputLabel>
                                 <Avatar
-                                    src={formData.customIdPhoto}
+                                    src={formData.idProof}
                                     alt="Custom ID"
                                     variant="rounded"
                                     sx={{
@@ -465,7 +465,7 @@ const FormManagementView = () => {
                                         border: "1px solid #ddd",
                                         cursor: "pointer",
                                     }}
-                                    onClick={() => handleImageClick(formData.customIdPhoto)}
+                                    onClick={() => handleImageClick(formData.idProof)}
                                 />
                             </Box>
                         </Grid>
@@ -474,7 +474,7 @@ const FormManagementView = () => {
                             <Box>
                                 <InputLabel>Custom ID Photo</InputLabel>
                                 <Avatar
-                                    src={formData.customIdPhoto}
+                                    src={formData.addressProof}
                                     alt="Custom ID"
                                     variant="rounded"
                                     sx={{
@@ -484,7 +484,7 @@ const FormManagementView = () => {
                                         border: "1px solid #ddd",
                                         cursor: "pointer",
                                     }}
-                                    onClick={() => handleImageClick(formData.customIdPhoto)}
+                                    onClick={() => handleImageClick(formData.addressProof)}
                                 />
                             </Box>
                         </Grid>

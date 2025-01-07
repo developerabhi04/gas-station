@@ -8,7 +8,6 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { server } from "../../main";
 
-
 const FormManagement = () => {
     const [rows, setRows] = useState([]);
 
@@ -16,12 +15,11 @@ const FormManagement = () => {
         const fetchUsers = async () => {
             try {
                 const response = await axios.get(`${server}/apply/get-all-applicants`, { withCredentials: true });
-                console.log(response)
+                console.log(response);
                 setRows(response.data.applicants.map((user) => ({
                     ...user,
                     id: user._id,
                     title: user.title,
-
                 })));
             } catch (error) {
                 console.error("Error fetching users:", error);
@@ -66,6 +64,7 @@ const FormManagement = () => {
                 </Link>
             ),
         },
+
         {
             field: "delete",
             headerName: "Delete",

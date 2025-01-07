@@ -5,6 +5,8 @@ import { State, City } from "country-state-city";
 import FormSubmitedSucessfully from "./FormSubmitedSucessfully";
 import { server } from "../../main";
 import { Helmet } from "react-helmet-async";
+const today = new Date().toISOString().split('T')[0];
+
 
 const Form = () => {
     const navigate = useNavigate();
@@ -24,6 +26,10 @@ const Form = () => {
     const [applicantPhoto, setApplicantPhoto] = useState(null);
     const [idProof, setIdProof] = useState(null);
     const [addressProof, setAddressProof] = useState(null);
+
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+
 
     // Handle photo upload change
     const handlePhotoChange = (e) => {
@@ -60,7 +66,6 @@ const Form = () => {
         }
     };
 
-
     const handlePhotoSecondChange = (e) => {
         const filess = e.target.files[0];
         if (filess) {
@@ -77,7 +82,6 @@ const Form = () => {
             }
         }
     };
-
 
 
 
@@ -166,6 +170,15 @@ const Form = () => {
             return;
         }
 
+
+
+        // Validate files
+        if (!applicantPhoto || !idProof || !addressProof) {
+            alert("Please upload all required documents.");
+            return;
+        }
+
+
         const formData = new FormData();
         formData.append("title", `Advertisement Locations of Petrol Pump - KSK Dealership in ${selectedStateName} - ${selectedStateCode}`);
         formData.append("locationDescription", `${selectedCity}, ${location}`);
@@ -216,22 +229,21 @@ const Form = () => {
         formData.append("rateTerm", rateTerm);
         formData.append("offerAnotherPlot", offerAnotherPlot);
 
+        formData.append("declarationIsAgree", declarationIsAgree);
+
         // Add files to the form data
         formData.append("applicantPhoto", applicantPhoto);
         formData.append("idProof", idProof);
         formData.append("addressProof", addressProof);
 
-        formData.append("declarationIsAgree", declarationIsAgree);
+        setIsSubmitting(true)
 
         try {
             const response = await fetch(`${server}/apply/submit`, {
                 method: "POST",
-                // headers: {
-                //     "Content-Type": "application/json",
-                // },
-                // body: JSON.stringify(formData),
                 body: formData,
             });
+
 
             const data = await response.json();
 
@@ -360,7 +372,7 @@ const Form = () => {
                     <div>
                         <h3>Apply For Dealership</h3>
 
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmit} >
                             {/* Application Section */}
                             <div>
                                 <div className="heading">
@@ -854,9 +866,13 @@ const Form = () => {
                                             <input
                                                 type="Date"
                                                 className="input-text"
+                                                // name="dateOfBirth"
+                                                // value={dateOfBirth}
+                                                // onChange={(e) => setDateOfBirth(e.target.value)}
                                                 name="dateOfBirth"
                                                 value={dateOfBirth}
                                                 onChange={(e) => setDateOfBirth(e.target.value)}
+                                                max={today}  // Set the max attribute to today's date
                                             />
                                         </div>
 
@@ -1093,7 +1109,7 @@ const Form = () => {
                                             <p>
                                                 <b>Date of registration sale deed / Gift deed / lease deed / date of mutation <span>*</span></b>
                                             </p>
-                                            <input type="date" name="dateOfRegistration" className="input-text" value={dateOfRegistration} onChange={(e) => setDateOfRegistration(e.target.value)} />
+                                            <input type="date" name="dateOfRegistration" className="input-text" value={dateOfRegistration} max={today} onChange={(e) => setDateOfRegistration(e.target.value)} />
                                         </div>
 
 
@@ -1283,7 +1299,7 @@ const Form = () => {
 
                                         <div style={{ width: "50%" }}>
                                             <p>
-                                                <b>Applicant Photo <span>*</span></b>
+                                                <b>Applicant ID Proof<span>*</span></b>
                                             </p>
 
                                             <input
@@ -1299,7 +1315,7 @@ const Form = () => {
 
                                         <div style={{ width: "50%" }}>
                                             <p>
-                                                <b>Applicant Photo <span>*</span></b>
+                                                <b>Applicant Address Proof<span>*</span></b>
                                             </p>
                                             <input
                                                 type="file"
@@ -1312,12 +1328,11 @@ const Form = () => {
                                         </div>
                                     </div>
                                     <div style={{ width: "100%" }}>
-                                        <button type="submit">Submit</button>
+                                        <button type="submit" disabled={isSubmitting}>
+                                            {isSubmitting ? "Submitting..." : "Submit"}
+                                        </button>
                                     </div>
-
                                 </div>
-
-
                             </div>
 
 
