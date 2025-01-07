@@ -165,11 +165,12 @@ const Form = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        setIsSubmitting(true)
+
         if (!declarationIsAgree) {
             alert("Please agree to the terms before submitting.");
             return;
         }
-
 
 
         // Validate files
@@ -236,7 +237,7 @@ const Form = () => {
         formData.append("idProof", idProof);
         formData.append("addressProof", addressProof);
 
-        setIsSubmitting(true)
+
 
         try {
             const response = await fetch(`${server}/apply/submit`, {
@@ -1110,7 +1111,14 @@ const Form = () => {
                                             <p>
                                                 <b>Date of registration sale deed / Gift deed / lease deed / date of mutation <span>*</span></b>
                                             </p>
-                                            <input type="date" name="dateOfRegistration" className="input-text" value={dateOfRegistration} max={today} onChange={(e) => setDateOfRegistration(e.target.value)} />
+                                            <input
+                                                type="date"
+                                                name="dateOfRegistration"
+                                                className="input-text"
+                                                value={dateOfRegistration}
+                                                max={today}
+                                                onChange={(e) => setDateOfRegistration(e.target.value)}
+                                            />
                                         </div>
 
 

@@ -352,12 +352,6 @@ const FormManagementView = () => {
                             />
                         </Grid>
 
-                        <Grid item xs={12} md={4}>
-                            <TextField label="Registration Date"
-                                value={formData.registrationDate || ""}
-                                sx={{ mb: 2 }}
-                            />
-                        </Grid>
 
                         <Grid item xs={12} md={4}>
                             <TextField label="Date Of Registration"
