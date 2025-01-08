@@ -1,5 +1,5 @@
 import { Accessibility, InsertDriveFile, Menu, Person, Photo } from "@mui/icons-material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { State, City } from "country-state-city";
 import FormSubmitedSucessfully from "./FormSubmitedSucessfully";
@@ -22,6 +22,7 @@ const Form = () => {
     const [sel, setSelectedStateName] = useState("");
     const [selectedState, setSelectedState] = useState("");
     const [selectedCites, setSelectedCity] = useState("");
+
 
     const [applicantPhoto, setApplicantPhoto] = useState(null);
     const [idProof, setIdProof] = useState(null);
@@ -112,8 +113,8 @@ const Form = () => {
     const [typeOfRO, setTypeOfRO] = useState("Regular");
     const [modeOfSelection, setModeOfSelection] = useState("Draw of Lots");
     const [state, setState] = useState("");
-    const [publishedDate, setPublishedDate] = useState("27 December 2024");
-    const [closingDate, setClosingDate] = useState("30 January 2025");
+    const [publishedDate, setPublishedDate] = useState("");
+    const [closingDate, setClosingDate] = useState("");
     const [applyAs, setApplyAs] = useState("Individual");
     const [firmName, setFirmName] = useState("");
     const [firstName, setFirstName] = useState("");
@@ -237,8 +238,6 @@ const Form = () => {
         formData.append("idProof", idProof);
         formData.append("addressProof", addressProof);
 
-
-
         try {
             const response = await fetch(`${server}/apply/submit`, {
                 method: "POST",
@@ -307,6 +306,44 @@ const Form = () => {
         setApplyAss(event.target.value);
         setApplyAs(event.target.value);
     };
+
+
+
+    // 
+    useEffect(() => {
+        const fetchDates = async () => {
+            try {
+                const response = await fetch(`${server}/date/dates`); // Replace with correct API endpoint
+                const data = await response.json();
+
+                if (response.ok && data.data.length > 0) {
+                    const latestDates = data.data[0]; // Assuming you have only one date document or need the first one
+
+                    // Format the date to "1 January 2025"
+                    const publishedDate = new Date(latestDates.publishedDate);
+                    const closingDate = new Date(latestDates.closingDate);
+
+                    const formatDate = (date) => {
+                        return new Intl.DateTimeFormat('en-GB', {
+                            day: 'numeric',
+                            month: 'long',
+                            year: 'numeric'
+                        }).format(date);
+                    };
+
+                    setPublishedDate(formatDate(publishedDate));  // Format the date to "1 January 2025"
+                    setClosingDate(formatDate(closingDate));  // Format the date to "1 January 2025"
+                } else {
+                    console.error('Failed to fetch dates:', data.message);
+                }
+            } catch (error) {
+                console.error('Error fetching dates:', error);
+            }
+        };
+
+        fetchDates();
+    }, []);
+
 
 
     return (
@@ -461,7 +498,7 @@ const Form = () => {
                                             </p>
                                         </div>
                                         <div>
-                                            <p>27 December 2024</p>
+                                            <p>{publishedDate}</p>
                                         </div>
 
                                         <div>
@@ -470,7 +507,7 @@ const Form = () => {
                                             </p>
                                         </div>
                                         <div>
-                                            <p>30 January 2025</p>
+                                            <p>{closingDate}</p>
                                         </div>
                                     </div>
 

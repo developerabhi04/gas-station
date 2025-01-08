@@ -1,13 +1,16 @@
+import { useState } from "react";
 import notification from "../../../assets/notification.gif";
 
 const About = () => {
+    const [isOpen, setIsOpen] = useState(true);
+
     return (
         <section className="about-section">
             {/* aboutUs */}
             <div className="about">
                 <div>
                     <h1>Welcome to Prime Petrol Distributors – Empowering India’s Fuel Retailers</h1>
-                    <p>Are you ready to become a part of India’s thriving fuel industry? At [Your Business Name], we offer an unparalleled opportunity for entrepreneurs and business leaders to establish themselves as trusted fuel retailers through our exclusive petrol pump dealership program. With a commitment to quality, reliability, and sustainability, we aim to fuel not just vehicles but the dreams of aspiring business owners across the nation.</p>
+                    <p>Are you ready to become a part of India’s thriving fuel industry? At Prime Petrol Distributors, we offer an unparalleled opportunity for entrepreneurs and business leaders to establish themselves as trusted fuel retailers through our exclusive petrol pump dealership program. With a commitment to quality, reliability, and sustainability, we aim to fuel not just vehicles but the dreams of aspiring business owners across the nation.</p>
 
                     <div className="links">
                         <h2>The Benefits of Our Dealership Program</h2>
@@ -31,8 +34,10 @@ const About = () => {
                             <li>
                                 <a href="#" title="Customer Support: Phone No.: 022-48903516 (10-5PM)">
                                     Phone No.: 022-48903516 (10-5PM)
-                                    <span style={{ color: "red" }} title="Current status: Closed">
-                                        Closed
+                                    <span style={{ color: isOpen ? "green" : "red", }}
+                                        title={isOpen ? "Current status: Opened" : "Current status: Closed"}
+                                    >
+                                        {isOpen ? "Opened" : "Closed"}
                                         <img src={notification} alt="Notification icon indicating the status is closed" title="Phone number is closed for the day" />
                                     </span>
                                 </a>
@@ -51,8 +56,10 @@ const About = () => {
                             <li>
                                 <a href="#" title="Last date for submission of the application form is 23.12.2024 till 12 midnight">
                                     Last date for submission of application form is 23.12.2024 till 12 midnight / आवेदन पत्र जमा करने की अंतिम तिथि 23.12.2024 रात्रि 12 बजे तक है।
-                                    <span style={{ color: "red" }} title="Current status: Closed">
-                                        Closed
+                                    <span style={{ color: isOpen ? "green" : "red", }}
+                                        title={isOpen ? "Current status: Opened" : "Current status: Closed"}
+                                    >
+                                        {isOpen ? "Opened" : "Closed"}
                                         <img src={notification} alt="Notification icon indicating the status is closed" title="Application submission deadline has passed" />
                                     </span>
                                 </a>
@@ -61,8 +68,10 @@ const About = () => {
                             <li>
                                 <a href="#" title="Last date for the application fee is 23.12.2024 till 12 midnight">
                                     The last date for the application fee is 23.12.2024 till 12 midnight / आवेदन शुल्क जमा करने की अंतिम तिथि 23.12.2024 रात्रि 12 बजे तक है।
-                                    <span style={{ color: "red" }} title="Current status: Closed">
-                                        Closed
+                                    <span style={{ color: isOpen ? "green" : "red", }}
+                                        title={isOpen ? "Current status: Opened" : "Current status: Closed"}
+                                    >
+                                        {isOpen ? "Opened" : "Closed"}
                                         <img src={notification} alt="Notification icon indicating the status is closed" title="Application fee deadline has passed" />
                                     </span>
                                 </a>

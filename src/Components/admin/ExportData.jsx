@@ -66,7 +66,110 @@ const ExportData = () => {
         { field: 'companyName', headerName: 'Company Name', headerClassName: 'table-header', width: 250 },
         { field: 'gender', headerName: 'Gender', headerClassName: 'table-header', width: 250 },
         { field: 'mobileNumber', headerName: 'Mobile Number', headerClassName: 'table-header', width: 250 },
-        { field: '', headerName: 'Gender', headerClassName: 'table-header', width: 250 },
+        { field: 'landlineNumber', headerName: 'Landline Number', headerClassName: 'table-header', width: 250 },
+        { field: 'resAddress', headerName: 'Residence Address', headerClassName: 'table-header', width: 250 },
+        { field: 'pincode', headerName: 'PinCode', headerClassName: 'table-header', width: 250 },
+        { field: 'stateAddress', headerName: 'State Address', headerClassName: 'table-header', width: 250 },
+        { field: 'district', headerName: 'District', headerClassName: 'table-header', width: 250 },
+        { field: 'email', headerName: 'Email', headerClassName: 'table-header', width: 250 },
+        { field: 'panCard', headerName: 'Pan Card', headerClassName: 'table-header', width: 250 },
+        { field: 'indianCitizen', headerName: 'Indian Citizen', headerClassName: 'table-header', width: 250 },
+        { field: 'indianITRule', headerName: 'Indian IT Rule', headerClassName: 'table-header', width: 250 },
+        { field: 'dateOfBirth', headerName: 'Date Of Birth', headerClassName: 'table-header', width: 250 },
+        { field: 'physicalDisability', headerName: 'Physical Disability', headerClassName: 'table-header', width: 250 },
+        { field: 'FatherOrHusbandFirstName', headerName: 'Father / Husband / FirstName', headerClassName: 'table-header', width: 250 },
+        { field: 'FatherOrHusbandMiddleName', headerName: 'Father / Husband / MiddleName', headerClassName: 'table-header', width: 250 },
+        { field: 'FatherOrHusbandLastName', headerName: 'Father / Husband / LastName', headerClassName: 'table-header', width: 250 },
+        { field: 'maritalStatus', headerName: 'Marital Status', headerClassName: 'table-header', width: 250 },
+
+        { field: 'qualification', headerName: 'Qualification', headerClassName: 'table-header', width: 250 },
+        { field: 'boardUniversityInstitute', headerName: 'Board University Institute"', headerClassName: 'table-header', width: 250 },
+        { field: 'degree', headerName: 'Degree', headerClassName: 'table-header', width: 250 },
+        { field: 'groupType', headerName: 'Group Type', headerClassName: 'table-header', width: 250 },
+        { field: 'landOwnerName', headerName: 'Land Owner Name', headerClassName: 'table-header', width: 250 },
+        { field: 'relationshipWithApplicant', headerName: 'Relationship With Applicant', headerClassName: 'table-header', width: 250 },
+        { field: 'registrationDate', headerName: 'Registration Date', headerClassName: 'table-header', width: 250 },
+        { field: 'KhasraKhatouniGutNoSurvey', headerName: 'Khasra Khatouni GutNoSurvey', headerClassName: 'table-header', width: 250 },
+        { field: 'landLocation', headerName: 'Land Location', headerClassName: 'table-header', width: 250 },
+        { field: 'landDimensionsFrontage', headerName: 'Land Dimensions Frontage', headerClassName: 'table-header', width: 250 },
+        { field: 'landDimensionsDepth', headerName: 'Land Dimensions Depth', headerClassName: 'table-header', width: 250 },
+        { field: 'landDimensionsArea', headerName: 'Land Dimensions Area', headerClassName: 'table-header', width: 250 },
+        { field: 'landTransfer', headerName: 'Land Transfer', headerClassName: 'table-header', width: 250 },
+        { field: 'rateTerm', headerName: 'rateTerm', headerClassName: 'table-header', width: 250 },
+        { field: 'offerAnotherPlot', headerName: 'Offer Another Plot', headerClassName: 'table-header', width: 250 },
+
+        // applicant photo
+       
+        {
+            field: 'applicantPhoto',
+            headerName: 'Applicant Photo',
+            headerClassName: 'table-header',
+            width: 250,
+            renderCell: (params) => (
+                <a href={params.value} target="_blank" rel="noopener noreferrer">
+                    <img
+                        src={params.value} // Assuming `params.value` contains the image URL
+                        alt="Applicant"
+                        style={{
+                            width: '100px',  // Adjust the size as per your need
+                            height: '100px',
+                            borderRadius: '8px', // Optional: To make the image rounded
+                            objectFit: 'cover',
+                            cursor: 'pointer',
+                        }}
+                    />
+                </a>
+            ),
+        },
+
+        // idProof photo
+        {
+            field: 'idProof',
+            headerName: 'ID Proof',
+            headerClassName: 'table-header',
+            width: 250,
+            renderCell: (params) => (
+                <a href={params.value} target="_blank" rel="noopener noreferrer">
+                    <img
+                        src={params.value} // Assuming `params.value` contains the image URL
+                        alt="Applicant"
+                        style={{
+                            width: '100px',  // Adjust the size as per your need
+                            height: '100px',
+                            borderRadius: '8px', // Optional: To make the image rounded
+                            objectFit: 'cover',
+                            cursor: 'pointer',
+                        }}
+                    />
+                </a>
+            ),
+        },
+
+        // idProof photo
+        {
+            field: 'addressProof',
+            headerName: 'Address Proof',
+            headerClassName: 'table-header',
+            width: 250,
+            renderCell: (params) => (
+                <a href={params.value} target="_blank" rel="noopener noreferrer">
+                    <img
+                        src={params.value} // Assuming `params.value` contains the image URL
+                        alt="Applicant"
+                        style={{
+                            width: '100px',  // Adjust the size as per your need
+                            height: '100px',
+                            borderRadius: '8px', // Optional: To make the image rounded
+                            objectFit: 'cover',
+                            cursor: 'pointer',
+                        }}
+                    />
+                </a>
+            ),
+        },
+
+        
+
     ];
 
     return (

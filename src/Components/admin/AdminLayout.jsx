@@ -1,4 +1,4 @@
-import { Close as CloseIcon, Collections, Dashboard,  ExitToApp as ExitToAppIcon, ImportExport, Menu as MenuIcon, Message } from "@mui/icons-material";
+import { Close as CloseIcon, Collections, Dashboard,  DateRange,  ExitToApp as ExitToAppIcon, ImportExport, Menu as MenuIcon, Message } from "@mui/icons-material";
 import { Box, Drawer, Grid, IconButton, Stack, styled, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Link as LinkComponent, useLocation, useNavigate } from "react-router-dom";
@@ -26,9 +26,14 @@ const adminTabs = [
         icon: <Dashboard />
     },
     {
+        name: "Date",
+        path: "/admin/date-range",
+        icon: <DateRange/>
+    },
+    {
         name: "Applicant Data",
         path: "/admin/form-data",
-        icon: <Collections/>
+        icon: <Collections />
     },
     {
         name: "Messages",

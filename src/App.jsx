@@ -1,12 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-
 import ChildrenOutlet from "./Components/ChildrenOutlet";
 import AdminRouteGuard from "./Auth/AdminRouteGuard"
 import ProtectedAdminRoute from "./Auth/ProtectedAdminRoute";
 import { lazy } from "react";
 import ProtectedURL from "./Auth/ProtectedURL";
 import ErrorBoundary from "./Auth/ErrorBoundary";
+import DateChange from "./Components/admin/DateChange";
 
 
 // Code-Spliting
@@ -56,6 +56,12 @@ const App = () => {
             </ProtectedAdminRoute>
           } />
 
+          <Route path="/admin/date-range" element={
+            <ProtectedAdminRoute>
+              <DateChange />
+            </ProtectedAdminRoute>
+          } />
+
           <Route path="/admin/form-data" element={
             <ProtectedAdminRoute>
               <FormManagement />
@@ -84,6 +90,7 @@ const App = () => {
         </Routes>
 
         <Toaster />
+
       </ErrorBoundary>
     </BrowserRouter>
   )

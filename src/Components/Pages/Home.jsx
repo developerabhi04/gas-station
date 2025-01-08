@@ -3,6 +3,7 @@ import notification from "../../assets/notification.gif";
 import pump1 from "../../assets/1 (1).png";
 import pump2 from "../../assets/2 (1).png";
 import pump3 from "../../assets/3 (1).png";
+import brochure from "../../assets/Download_Brochure.pdf"; // Import the PDF file
 import Partner from "./Home/Partner";
 import About from "./Home/About";
 import DealershipSection from "./Home/Delership";
@@ -11,19 +12,33 @@ import { Helmet } from "react-helmet-async";
 const banners = [
   {
     src: pump1,
-    alt: "Petrol Pump 1 - Prime Petrol Distributors"
+    alt: "Petrol Pump 1 - Prime Petrol Distributors",
   },
   {
     src: pump2,
-    alt: "Petrol Pump 2 - Prime Petrol Distributors"
+    alt: "Petrol Pump 2 - Prime Petrol Distributors",
   },
   {
     src: pump3,
-    alt: "Petrol Pump 3 - Prime Petrol Distributors"
-  }
+    alt: "Petrol Pump 3 - Prime Petrol Distributors",
+  },
 ];
 
 const Home = () => {
+  // Function to handle download and automatic opening of the PDF
+  const handleDownloadBrochure = () => {
+    // Create a hidden link element
+    const link = document.createElement("a");
+    link.href = brochure; // URL to the brochure
+    link.download = "Download_Brochure.pdf"; // File name for the downloaded file
+    document.body.appendChild(link); // Append the link to the document
+    link.click(); // Programmatically click the link to download the file
+    document.body.removeChild(link); // Remove the link after downloading
+
+    // Automatically open the PDF in a new tab
+    window.open(brochure, "_blank");
+  };
+
   return (
     <>
       {/* SEO Metadata using Helmet */}
@@ -82,14 +97,22 @@ const Home = () => {
                       "Arunachal Pradesh",
                       "Assam",
                       "Delhi",
-                      "Goa"
+                      "Goa",
                     ].map((location, index) => (
                       <li key={index}>
-                        <a href={`/dealership/${location.toLowerCase().replace(/\s/g, "-")}`}>
-                          Advertisement Locations of Petrol Pump - KSK Dealership in {location} -
+                        <a
+                          href={`/dealership/${location
+                            .toLowerCase()
+                            .replace(/\s/g, "-")}`}
+                        >
+                          Advertisement Locations of Prime Petrol Distributors
+                          in {location} -
                           <span style={{ color: "red" }}>
                             Closed{" "}
-                            <img src={notification} alt={`Notification for ${location}`} />
+                            <img
+                              src={notification}
+                              alt={`Notification for ${location}`}
+                            />
                           </span>
                         </a>
                       </li>
@@ -98,10 +121,15 @@ const Home = () => {
                 </div>
               </div>
             </div>
+
+            {/* Bottom Links Section with Download Brochure */}
             <div className="bottom-links-b">
               <ul>
                 <li>
-                  <a href="/download-brochure">Download Brochure</a>
+                  {/* Button for downloading and opening the PDF */}
+                  <button onClick={handleDownloadBrochure}>
+                    Download Brochure
+                  </button>
                 </li>
               </ul>
             </div>
@@ -112,8 +140,8 @@ const Home = () => {
             autoplay
             autoplayDuration={1500}
             showNav={false}
-            images={banners.map(banner => banner.src)}
-            alt={banners.map(banner => banner.alt)}
+            images={banners.map((banner) => banner.src)}
+            alt={banners.map((banner) => banner.alt)}
           />
         </div>
       </section>
@@ -124,7 +152,9 @@ const Home = () => {
           <div>
             <strong>Notice:</strong>
             <marquee>
-              Applicants Please Note: Application has to be submitted online at www.petrolpump-ksk.com. We will not be responsible if the fee is deposited on any other platform.
+              Applicants Please Note: Application has to be submitted online at
+              Prime Petrol Distributors. We will not be responsible if the fee
+              is deposited on any other platform.
             </marquee>
           </div>
         </div>
@@ -136,6 +166,6 @@ const Home = () => {
       <DealershipSection />
     </>
   );
-}
+};
 
 export default Home;

@@ -111,7 +111,8 @@
                         padding: 0.8rem;
                         text-align: center;
 
-                        >a {
+                        >button {
+                            outline: auto;
                             color: #fff;
                             font-size: 14px;
                             background: #007bff;
@@ -195,7 +196,8 @@
 
                         >li {
 
-                            >a {
+                            >button {
+                                outline: auto;
                                 color: #fff;
                                 font-size: 11px;
                                 background: #007bff;
@@ -273,13 +275,14 @@
 
                         >li {
 
-                            >a {
+                            >button {
                                 color: #fff;
                                 font-size: 11px;
                                 background: #007bff;
                                 padding: 8px 12px;
                                 border-radius: 5px;
                                 cursor: pointer;
+                                outline: auto;
 
                                 &:hover {
                                     background: #0d6ed6;

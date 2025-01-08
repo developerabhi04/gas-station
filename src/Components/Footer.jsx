@@ -15,7 +15,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <a>Privacy Policy</a>
+            {/* <a>Privacy Policy</a> */}
           </div>
 
           <div>
@@ -28,7 +28,7 @@ const Footer = () => {
 
           <div>
             <p>
-              <b>ARUN FUEL STATION LIMITED owns the website and services offered here.</b>
+              <b>Prime Petrol Distributors owns the website and services offered here.</b>
             </p>
           </div>
 

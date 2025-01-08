@@ -1,4 +1,12 @@
+import { useNavigate } from "react-router-dom";
+
 const DealershipSection = () => {
+    const navigate = useNavigate();
+
+    const redirectSubmit = () => {
+        navigate("/apply-dealership", { state: { from: 'withinApp' } })
+    }
+
     return (
         <section className="dealership-section">
             <div className="dealership-container">
@@ -51,7 +59,7 @@ const DealershipSection = () => {
                 <div className="dealership-cta">
                     <h3>Fuel Your Future with Us</h3>
                     <p>Start your entrepreneurial journey and help power India’s energy future.</p>
-                    <button className="dealership-button">Get Started</button>
+                    <button className="dealership-button" onClick={redirectSubmit}>Get Started</button>
                 </div>
 
             </div>
