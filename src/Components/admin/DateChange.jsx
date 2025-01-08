@@ -16,14 +16,16 @@ const DateChange = () => {
     useEffect(() => {
         const fetchDates = async () => {
             try {
-                const response = await fetch(`${server}/date/dates`); // Replace with correct API endpoint
+                const response = await fetch(`${server}/date/dates`);
                 const data = await response.json();
 
+                console.log("API response:", data); // Add this to inspect the response
+
                 if (response.ok && data.data.length > 0) {
-                    const latestDates = data.data[0]; // Assuming you have only one date document or need the first one
-                    setPublishedDate(latestDates.publishedDate.split('T')[0]); // Format the date to YYYY-MM-DD
+                    const latestDates = data.data[0];
+                    setPublishedDate(latestDates.publishedDate.split('T')[0]);
                     setClosingDate(latestDates.closingDate.split('T')[0]);
-                    setDocumentId(latestDates._id); // Set document ID
+                    setDocumentId(latestDates._id);
                 } else {
                     console.error('Failed to fetch dates:', data.message);
                 }
@@ -38,13 +40,33 @@ const DateChange = () => {
         fetchDates();
     }, []);
 
-    // Submit updated dates to the backend
-    const handleSubmit = async () => {
-        if (!documentId) {
-            toast.error('No date document available to update');
-            return;
-        }
+    // Function to create new dates
+    const createDates = async () => {
+        try {
+            const response = await fetch(`${server}/date/dates`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ publishedDate, closingDate }),
+            });
 
+            const data = await response.json();
+            if (response.ok) {
+                toast.success('Dates created successfully');
+                setDocumentId(data.data._id); // Set the new document ID for future updates
+            } else {
+                console.error('Failed to create dates:', data.message);
+                toast.error('Error: ' + data.message);
+            }
+        } catch (error) {
+            console.error('Error creating dates:', error);
+            toast.error('An error occurred while creating the dates.');
+        }
+    };
+
+    // Function to update existing dates
+    const updateDates = async () => {
         try {
             const response = await fetch(`${server}/date/dates/${documentId}`, {
                 method: 'PUT',
@@ -56,18 +78,31 @@ const DateChange = () => {
 
             const data = await response.json();
             if (response.ok) {
-                toast.success('Dates updated successfully'); // Show success toast
+                toast.success('Dates updated successfully');
             } else {
                 console.error('Failed to update dates:', data.message);
-                toast.error('Error: ' + data.message); // Show error toast
+                toast.error('Error: ' + data.message);
             }
         } catch (error) {
             console.error('Error updating dates:', error);
-            toast.error('An error occurred while updating the dates.'); // Show error toast
+            toast.error('An error occurred while updating the dates.');
         }
     };
 
-    
+    // Submit handler to either create or update dates
+    const handleSubmit = async () => {
+        if (!publishedDate || !closingDate) {
+            toast.error('Please provide both published and closing dates.');
+            return;
+        }
+
+        if (documentId) {
+            await updateDates(); // Update if documentId exists
+        } else {
+            await createDates(); // Create if no documentId
+        }
+    };
+
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -107,7 +142,7 @@ const DateChange = () => {
 
                 {/* Submit Button */}
                 <button style={styles.button} onClick={handleSubmit}>
-                    Update Dates
+                    {documentId ? 'Update Dates' : 'Create Dates'}
                 </button>
             </div>
         </AdminLayout>
